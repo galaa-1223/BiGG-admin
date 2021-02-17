@@ -11,6 +11,7 @@ use App\Models\Teachers;
 class TeachersController extends Controller
 {
     private $status_code = 200;
+    private $error_code = 500;
 
     public function teacherLogin(Request $request)
     {
@@ -25,8 +26,8 @@ class TeachersController extends Controller
         {
             return response()->json([
                 "status" => "failed",
-                "validation_error" => $validator->errors()
-            ]);
+                "validation_error" => $validator->errors(),
+            ],500);
         }
 
         $teacher_code_status = Teachers::where("code", $request->code)->first();
@@ -41,11 +42,11 @@ class TeachersController extends Controller
                 return response()->json(["status" => $this->status_code, "success" => true, "message" => "Амжилттай нэвтэрлээ!", "data" => $teacher]);
             
             } else {
-                return response()->json(["status" => "failed", "success" => false, "message" => "Нууц үг худлаа байна!"]);
+                return response()->json(["status" => "failed", "success" => false, "message" => "Нууц үг худлаа байна!"], $this->error_code);
             }
 
         } else {
-            return response()->json(["status" => "failed", "success" => false, "message" => "Бүртгэлтэй кодтой багш алба байна!"]);
+            return response()->json(["status" => "failed", "success" => false, "message" => "Бүртгэлтэй кодтой багш алба байна!"], $this->error_code);
         }
     }
 
@@ -57,5 +58,13 @@ class TeachersController extends Controller
             $teacher = Teachers::where("code", $code)->first();
             return $teacher;
         }
+    }
+
+    public function teacherList()
+    {
+        $teacher = array();
+
+        $teacher = Teachers::all();
+            return $teacher;
     }
 }
