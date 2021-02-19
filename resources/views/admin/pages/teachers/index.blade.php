@@ -31,15 +31,16 @@
                             <div class="text-gray-600 text-xs mt-0.5">jobs</div>
                         </div>
                         <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                            <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="Facebook">
-                                <i class="w-3 h-3 fill-current" data-feather="facebook"></i>
+                            <a href="{{ route('teachers-edit', $teacher->id) }}" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="{{ __('site.edit') }}">
+                                <i class="w-3 h-3 fill-current" data-feather="edit-2"></i>
                             </a>
-                            <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="Twitter">
-                                <i class="w-3 h-3 fill-current" data-feather="twitter"></i>
-                            </a>
-                            <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="Linked In">
-                                <i class="w-3 h-3 fill-current" data-feather="linkedin"></i>
-                            </a>
+                            <form class="delete-form" method="POST" action="{{ route('teachers-delete', $teacher->id) }}">
+                                @method('DELETE')
+                                {{ csrf_field() }} 
+                                <button type="submit" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="{{ __('site.delete') }}">
+                                    <i class="w-3 h-3 fill-current" data-feather="trash"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
@@ -101,6 +102,19 @@
         
         </div>
         <!-- END: Pagination -->
+    </div>
+    <div class="modal" id="delete-modal-preview">
+        <div class="modal__content">
+            <div class="p-5 text-center">
+                <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                <div class="text-3xl mt-5">Are you sure?</div>
+                <div class="text-gray-600 mt-2">Do you really want to delete these records? This process cannot be undone.</div>
+            </div>
+            <div class="px-5 pb-8 text-center">
+                <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancel</button>
+                <button type="button" class="button w-24 bg-theme-6 text-white">Delete</button>
+            </div>
+        </div>
     </div>
 @endsection
 

@@ -41,6 +41,7 @@
         "pristinejs": "^0.1.9",
         "raw-loader": "^4.0.2",
         "svg-loaders": "^0.2.0",
+        "sweetalert2": "^10.15.5",
         "tabulator-tables": "^4.9.3",
         "tail.select": "^0.5.15",
         "tailwindcss": "^2.0.3",

@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Admin Login
 Route::get('admin', [AdminAuthController::class, 'adminGet'])->name('adminLogin');
 Route::get('admin/login', [AdminAuthController::class, 'adminGetLogin'])->name('adminLogin');
 Route::post('admin/login', [AdminAuthController::class, 'AdminLogin'])->name('adminLoginPost');
@@ -34,14 +35,23 @@ Route::group(['prefix' => 'admin','middleware' => 'adminauth'], function () {
 	// Admin Dashboard
 	Route::get('dashboard',[AdminController::class, 'dashboard'])->name('admindashboard');	
 	
+	// Teacher
 	Route::get('teachers',[TeachersController::class, 'index'])->name('teachers');
 	Route::get('teachers/add',[TeachersController::class, 'add'])->name('teachers-add');
-	Route::post('teachers/add',[TeachersController::class, 'store'])->name('teachers-save');
+	Route::get('teachers/edit/{id}',[TeachersController::class, 'edit'])->name('teachers-edit');
+	// Route::get('teachers/delete/{id}',[TeachersController::class, 'destroy'])->name('teachers-delete');
 
+	Route::post('teachers/add',[TeachersController::class, 'store'])->name('teachers-save');
+	Route::post('teachers/edit/{id}',[TeachersController::class, 'update'])->name('teachers-edit');
+
+	Route::delete('teachers/delete/{id}',[TeachersController::class, 'destroy'])->name('teachers-delete');
+
+	// Students
 	Route::get('students',[StudentsController::class, 'index'])->name('students');
 	Route::get('students/add',[StudentsController::class, 'add'])->name('students-add');
 });
 
+// Department Login
 Route::get('department', [DepartmentAuthController::class, 'departmentGet'])->name('departmentLogin');
 Route::get('department/login', [DepartmentAuthController::class, 'departmentGetLogin'])->name('departmentLogin');
 Route::post('department/login', [DepartmentAuthController::class, 'DepartmentLogin'])->name('departmentLoginPost');

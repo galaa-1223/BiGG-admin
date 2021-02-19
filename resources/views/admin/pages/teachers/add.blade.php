@@ -112,7 +112,7 @@
                         <div class="col-span-12 xl:col-span-6">
                             <div class="input-form">
                                 <label class="flex flex-col sm:flex-row">
-                                Төрсөн огноо: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Жил-Сар-Өдөр</span>
+                                Төрсөн огноо: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Жишээ: 2000-12-31</span>
                                 </label>
                                 <input type="text" name="tursun" class="input w-full border mt-2" placeholder="YYYY-MM-DD" required  data-pristine-required-message="Төрсөн огноо хоосон байж болохгүй"/>
                             </div>
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div class="flex justify-end mt-4">
-                        <button type="button" onclick="window.location.href='{{ route('teachers-add') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
+                        <button type="button" onclick="window.location.href='{{ route('teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
                         <button type="submit" name="action" value="save_and_new" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save_and_new') }}</button> 
                         <button type="submit" name="action" value="save" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save') }}</button>
                     </div>

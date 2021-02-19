@@ -87,4 +87,75 @@ class TeachersController extends Controller
                 break;
         }
     }
+
+    public function edit($id)
+    {
+        $pageTitle = 'Багш засварлах';
+        $pageName = 'teachers';
+
+        $teacher = Teachers::findOrFail($id);
+
+        $activeMenu = activeMenu($pageName);
+
+        return view('admin/pages/'.$pageName.'/edit', [
+            'first_page_name' => $activeMenu['first_page_name'],
+            'page_title' => $pageTitle,
+            'page_name' => $pageName,
+            'teacher' => $teacher
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $member = Teachers::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+
+            $date = Str::slug(Carbon::now());
+            $imageName = Str::slug($request->code) . '-' . $date;
+            $image = Image::make($request->file('image'))->save(public_path('/uploads/teachers/') . $imageName . '.jpg')->encode('jpg','50');
+            $image->fit(300, 300);
+            $image->save(public_path('/uploads/teachers/thumbs/' .$imageName.'.jpg'));
+            $member->image = $imageName.'.jpg';
+        }
+
+        $member->ner = Str::ucfirst($request->get("ner"));
+        $member->ovog = Str::ucfirst($request->get("ovog"));
+        $member->urag = Str::ucfirst($request->get("urag"));
+        $member->code = $request->get("code");
+        $member->register = $request->get("register");
+        $member->huis = $request->get("huis");
+        $member->tursun = $request->get("tursun");
+        $member->email = $request->get("email");
+        $member->password = $request->get("password");
+        $member->phone = $request->get("phone");
+        $member->address = $request->get("address");
+        $member->updated_at = Carbon::now();
+
+        $member->save();
+
+        switch ($request->input('action')) {
+            case 'save':
+                return redirect()->route('teachers')->with('success', 'Багш засварлагдлаа нэмэгдлээ!'); 
+                break;
+    
+            case 'save_and_new':
+                return back()->with('success', 'Багш засварлагдлаа нэмэгдлээ!');
+                break;
+    
+            case 'preview':
+                echo 'preview';
+                break;
+        }
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $member = Teachers::findOrFail($id);
+        $member->delete();
+
+        return redirect()->route('teachers')->with('success', 'Багш устгагдлаа нэмэгдлээ!'); 
+
+    }
+
 }

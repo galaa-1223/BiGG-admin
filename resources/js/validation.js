@@ -73,7 +73,7 @@ import Toastify from "toastify-js";
                     newWindow: true,
                     close: true,
                     gravity: "bottom",
-                    position: "left",
+                    position: "right",
                     backgroundColor: "#D32929",
                     stopOnFocus: true,
                 }).showToast();
