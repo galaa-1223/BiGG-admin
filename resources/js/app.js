@@ -8,7 +8,7 @@ import "./tippy";
 import "./datepicker";
 import "./tail-select";
 import "./dropzone";
-import "./inputmask";
+// import "./inputmask";
 // import "./ckeditor";
 import "./validation";
 import "./zoom";

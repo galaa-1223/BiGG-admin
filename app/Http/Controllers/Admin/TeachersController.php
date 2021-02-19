@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Traits\Helpers;
 use Illuminate\Support\Str;
 use Image;
 
@@ -13,7 +12,6 @@ use App\Models\Teachers;
 
 class TeachersController extends Controller
 {
-    use Helpers;
 
     public function index()
     {
@@ -21,7 +19,7 @@ class TeachersController extends Controller
         $pageName = 'teachers';
         $teachers = Teachers::orderBy('created_at', 'desc')->paginate(9);
 
-        $activeMenu = $this->activeMenu($pageName);
+        $activeMenu = activeMenu($pageName);
 
         return view('admin/pages/'.$pageName.'/index', [
             'first_page_name' => $activeMenu['first_page_name'],
@@ -36,7 +34,7 @@ class TeachersController extends Controller
         $pageTitle = 'Багш нэмэх';
         $pageName = 'teachers';
 
-        $activeMenu = $this->activeMenu($pageName);
+        $activeMenu = activeMenu($pageName);
 
         return view('admin/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],

@@ -1,24 +1,11 @@
 <?php
-
-namespace App\Traits;
-
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-trait Helpers
+if(!function_exists('activeMenu')) 
 {
-    public function mb_ucfirst($value)
-    {
-        return mb_strtoupper(mb_substr($value, 0, 1)) . mb_substr($value, 1);
-    }
-
-    public function slugify($string)
-    {
-        return str_replace(array(" ", '_', '-', ',','#', '$', '&', '@', '*', '^', '"', "'"), '-', $string);
-    }
-
-    public function activeMenu($pageName, $type = 'app.admin_side_menu')
+    function activeMenu($pageName, $type = 'app.admin_side_menu')
     {
         $firstPageName = '';
         $secondPageName = '';
