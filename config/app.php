@@ -26,13 +26,13 @@ return [
             'link' => null,
             'sub_menu' => [
                 'teachers' => [
-                    'icon' => 'plus',
+                    'icon' => 'user-plus',
                     'page_name' => 'teachers-add',
                     'title' => 'Багш нэмэх',
                     'link' => '/admin/teachers/add'
                 ],
                 'news-lists' => [
-                    'icon' => 'list',
+                    'icon' => 'user',
                     'page_name' => 'teachers-lists',
                     'title' => 'Багш жагсаалт',
                     'link' => '/admin/teachers'
@@ -59,6 +59,78 @@ return [
                 ]
             ]
         ],
+        'class' => [
+            'icon' => 'briefcase',
+            'page_name' => 'class',
+            'title' => 'Анги',
+            'link' => null,
+            'sub_menu' => [
+                'class' => [
+                    'icon' => 'plus',
+                    'page_name' => 'class-add',
+                    'title' => 'Анги нэмэх',
+                    'link' => '/admin/class/add'
+                ],
+                'news-lists' => [
+                    'icon' => 'list',
+                    'page_name' => 'class-lists',
+                    'title' => 'Анги жагсаалт',
+                    'link' => '/admin/class'
+                ]
+            ]
+        ],
+        'huvaari' => [
+            'icon' => 'calendar',
+            'page_name' => 'huvaari',
+            'title' => 'Хичээлийн хуваарь',
+            'link' => '/admin/huvaari'
+        ],
+        'study' => [
+            'icon' => 'book-open',
+            'page_name' => 'study',
+            'title' => 'Сургалт',
+            'link' => null,
+            'sub_menu' => [
+                'students' => [
+                    'icon' => 'watch',
+                    'page_name' => 'students-add',
+                    'title' => 'Ирц',
+                    'link' => '/admin/students/add'
+                ],
+                'news-lists' => [
+                    'icon' => 'edit',
+                    'page_name' => 'students-lists',
+                    'title' => 'Явц',
+                    'link' => '/admin/students'
+                ]
+            ]
+        ],
+        'eschool' => [
+            'icon' => 'smartphone',
+            'page_name' => 'eschool',
+            'title' => 'Eschool',
+            'link' => null,
+            'sub_menu' => [
+                'ehicheel' => [
+                    'icon' => 'watch',
+                    'page_name' => 'ehicheel',
+                    'title' => 'Хичээл',
+                    'link' => '/admin/students/add'
+                ],
+                'edaalgavar' => [
+                    'icon' => 'edit',
+                    'page_name' => 'edaalgavar',
+                    'title' => 'Даалгавар',
+                    'link' => '/admin/students'
+                ],
+                'eshalgalt' => [
+                    'icon' => 'edit',
+                    'page_name' => 'eshalgalt',
+                    'title' => 'Шалгалт',
+                    'link' => '/admin/students'
+                ]
+            ]
+        ],
         'settings' => [
             'icon' => 'settings',
             'page_name' => 'settings',
@@ -76,33 +148,125 @@ return [
             'icon' => 'home',
             'page_name' => 'dashboard',
             'title' => 'Хянах самбар',
-            'link' => '/department'
+            'link' => '/department/dashboard'
         ],
-        'menus' => [
-            'icon' => 'menu',
-            'page_name' => 'menus',
-            'title' => 'Сайтын цэс',
-            'link' => '/department/menus'
-        ],
-        'news' => [
-            'icon' => 'edit',
-            'page_name' => 'news',
-            'title' => 'Мэдээ удирдлага',
+        'teachers' => [
+            'icon' => 'user',
+            'page_name' => 'teachers',
+            'title' => 'Багш',
             'link' => null,
             'sub_menu' => [
-                'news-categories' => [
-                    'icon' => 'layers',
-                    'page_name' => 'news-categories',
-                    'title' => 'Каталоги',
-                    'link' => '/department/news-categories'
+                'teachers' => [
+                    'icon' => 'user-plus',
+                    'page_name' => 'teachers-add',
+                    'title' => 'Багш нэмэх',
+                    'link' => '/department/teachers/add'
                 ],
                 'news-lists' => [
-                    'icon' => 'menu',
-                    'page_name' => 'news-lists',
-                    'title' => 'Мэдээний жагсаалт',
-                    'link' => '/department/news'
+                    'icon' => 'user',
+                    'page_name' => 'teachers-lists',
+                    'title' => 'Багш жагсаалт',
+                    'link' => '/department/teachers'
                 ]
             ]
+        ],
+        'students' => [
+            'icon' => 'users',
+            'page_name' => 'students',
+            'title' => 'Оюутан',
+            'link' => null,
+            'sub_menu' => [
+                'students' => [
+                    'icon' => 'plus',
+                    'page_name' => 'students-add',
+                    'title' => 'Оюутан нэмэх',
+                    'link' => '/department/students/add'
+                ],
+                'news-lists' => [
+                    'icon' => 'list',
+                    'page_name' => 'students-lists',
+                    'title' => 'Оюутан жагсаалт',
+                    'link' => '/department/students'
+                ]
+            ]
+        ],
+        'class' => [
+            'icon' => 'briefcase',
+            'page_name' => 'class',
+            'title' => 'Анги',
+            'link' => null,
+            'sub_menu' => [
+                'class' => [
+                    'icon' => 'plus',
+                    'page_name' => 'class-add',
+                    'title' => 'Анги нэмэх',
+                    'link' => '/department/class/add'
+                ],
+                'news-lists' => [
+                    'icon' => 'list',
+                    'page_name' => 'class-lists',
+                    'title' => 'Анги жагсаалт',
+                    'link' => '/department/class'
+                ]
+            ]
+        ],
+        'huvaari' => [
+            'icon' => 'calendar',
+            'page_name' => 'huvaari',
+            'title' => 'Хичээлийн хуваарь',
+            'link' => '/department/huvaari'
+        ],
+        'study' => [
+            'icon' => 'book-open',
+            'page_name' => 'study',
+            'title' => 'Сургалт',
+            'link' => null,
+            'sub_menu' => [
+                'students' => [
+                    'icon' => 'watch',
+                    'page_name' => 'students-add',
+                    'title' => 'Ирц',
+                    'link' => '/department/students/add'
+                ],
+                'news-lists' => [
+                    'icon' => 'edit',
+                    'page_name' => 'students-lists',
+                    'title' => 'Явц',
+                    'link' => '/department/students'
+                ]
+            ]
+        ],
+        'eschool' => [
+            'icon' => 'smartphone',
+            'page_name' => 'eschool',
+            'title' => 'Eschool',
+            'link' => null,
+            'sub_menu' => [
+                'ehicheel' => [
+                    'icon' => 'watch',
+                    'page_name' => 'ehicheel',
+                    'title' => 'Хичээл',
+                    'link' => '/department/students/add'
+                ],
+                'edaalgavar' => [
+                    'icon' => 'edit',
+                    'page_name' => 'edaalgavar',
+                    'title' => 'Даалгавар',
+                    'link' => '/department/students'
+                ],
+                'eshalgalt' => [
+                    'icon' => 'edit',
+                    'page_name' => 'eshalgalt',
+                    'title' => 'Шалгалт',
+                    'link' => '/department/students'
+                ]
+            ]
+        ],
+        'settings' => [
+            'icon' => 'settings',
+            'page_name' => 'settings',
+            'title' => 'Тохиргоо',
+            'link' => '/department/settings'
         ]
         
     ],
