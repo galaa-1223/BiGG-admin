@@ -15,7 +15,13 @@ class CreateHicheelTable extends Migration
     {
         Schema::create('hicheel', function (Blueprint $table) {
             $table->id();
+            $table->string('ner', 300);
+            $table->mediumInteger('tsag');
+            $table->mediumInteger('b_id');
             $table->timestamps();
+            $table->engine = 'MyISAM';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
         });
     }
 

@@ -16,21 +16,11 @@ class CreateAngiTable extends Migration
         Schema::create('angi', function (Blueprint $table) {
             $table->id();
             $table->string('ner', 300);
-            $table->integer('cource', 1);
+            $table->tinyInteger('cource');
             $table->string('buleg', 1)->default('a');
-            $table->date('tursun');
-            $table->string('register', 10);
-            $table->enum('huis', ['er', 'em'])->default('er');
-            $table->char('code', 8);
-            $table->string('password');
-            $table->string('phone', 50)->nullable();
-            $table->string('image', 200)->nullable();
-            $table->string('address', 500)->nullable();
-            $table->string('email', 50)->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->mediumInteger('m_id');
+            $table->mediumInteger('b_id');
             $table->timestamps();
-            $table->json('config')->nullable();
             $table->engine = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';

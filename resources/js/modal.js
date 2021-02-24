@@ -1,6 +1,9 @@
+import Toastify from "toastify-js";
+
 (function (cash) {
     // Show or hide global event listener
     let events = [];
+    let Did = 0;
 
     // Get highest z-index
     function getHighestZindex() {
@@ -117,6 +120,17 @@
                     events[key].triggerCallback = true;
                 }
             });
+
+            Toastify({
+                text: "Устгах үйлдлийг цуцаллаа!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                backgroundColor: "#D32929",
+                stopOnFocus: true,
+            }).showToast();
         }
     }
 
@@ -163,6 +177,18 @@
     cash("body").on("click", '[data-dismiss="modal"]', function () {
         let modal = cash(this).closest(".modal")[0];
         hide(modal);
+    });
+
+    cash("body").on("click", '.delete_button', function () {
+        Did = cash(this).data("id");
+        show(cash(this).data("target"));
+    });
+
+    cash("body").on("click", '.modal_delete_button', function () {
+        // cash('.modal_delete_button').attr('disabled','disabled');
+        cash('.modal_delete_button').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader();
+        cash(".t_id").val(Did);
+        return true;
     });
 
     // Detect show or hide event

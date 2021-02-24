@@ -16,6 +16,7 @@ class CreateTenhimTable extends Migration
         Schema::create('tenhim', function (Blueprint $table) {
             $table->id();
             $table->string('ner', 300);
+            $table->timestamps();
             $table->engine = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';

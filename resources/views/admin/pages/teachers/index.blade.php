@@ -34,13 +34,9 @@
                             <a href="{{ route('teachers-edit', $teacher->id) }}" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="{{ __('site.edit') }}">
                                 <i class="w-3 h-3 fill-current" data-feather="edit-2"></i>
                             </a>
-                            <form class="delete-form" method="POST" action="{{ route('teachers-delete', $teacher->id) }}">
-                                @method('DELETE')
-                                {{ csrf_field() }} 
-                                <button type="submit" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="{{ __('site.delete') }}">
+                            <a class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip delete_button" href="javascript:;" data-id="{{ $teacher->id }}" data-target="#delete-confirmation-modal" title="{{ __('site.delete') }}">
                                     <i class="w-3 h-3 fill-current" data-feather="trash"></i>
-                                </button>
-                            </form>
+                            </a>
                         </div>
                     </div>
                     <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
@@ -60,62 +56,26 @@
             </div>
             @endforeach
         <!-- END: Багшийн талбар -->
-        <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            <ul class="pagination">
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevrons-left"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevron-left"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">...</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">1</a>
-                </li>
-                <li>
-                    <a class="pagination__link pagination__link--active" href="">2</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">3</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">...</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevrons-right"></i>
-                    </a>
-                </li>
-            </ul>
-        
-        </div>
-        <!-- END: Pagination -->
     </div>
-    <div class="modal" id="delete-modal-preview">
+    <!-- BEGIN: Delete Confirmation Modal -->
+    <div class="modal" id="delete-confirmation-modal">
         <div class="modal__content">
-            <div class="p-5 text-center">
-                <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
-                <div class="text-3xl mt-5">Are you sure?</div>
-                <div class="text-gray-600 mt-2">Do you really want to delete these records? This process cannot be undone.</div>
-            </div>
-            <div class="px-5 pb-8 text-center">
-                <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1">Cancel</button>
-                <button type="button" class="button w-24 bg-theme-6 text-white">Delete</button>
-            </div>
+            <form action="{{ route('admin-teachers-delete-ajax') }}" method="post">
+            @csrf
+                <input type="hidden" class="t_id" name="t_id" value="">
+                <div class="p-5 text-center">
+                    <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i>
+                    <div class="text-3xl mt-5">Сонгосон багшийг устгахыг хүсэж байна уу?</div>
+                    <div class="text-gray-600 mt-2">Баазаас нэг мөсөн устгагдахыг анхаарна уу!</div>
+                </div>
+                <div class="px-5 pb-8 text-center">
+                    <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 mr-1">{{ __('site.cancel') }}</button>
+                    <button type="submit" class="modal_delete_button button w-24 bg-theme-6 text-white">{{ __('site.delete') }}</button>
+                </div>
+            </form>
         </div>
     </div>
+    <!-- END: Delete Confirmation Modal -->
 @endsection
 
 @section('style')

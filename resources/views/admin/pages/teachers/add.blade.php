@@ -8,7 +8,7 @@
     @endif
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-            <form class="validate-form-teacher" action="{{ route('teachers-save') }}" method="post" enctype="multipart/form-data">
+            <form class="validate-form-teacher" action="{{ route('admin-teachers-save') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- BEGIN: Үндсэн мэдээлэл -->
             <div class="intro-y box lg:mt-5">
@@ -54,7 +54,7 @@
                                 <label class="flex flex-col sm:flex-row">
                                 Багшийн код: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Тоо оруулна</span>
                                 </label>
-                                <input type="integer" name="code" class="input w-full border mt-2" minlength="8" maxlength="8" required data-pristine-integer-message="Тэмдэгт оруулна уу" data-pristine-minlength-message="8 тэмдэгт байх ёстой" data-pristine-maxlength-message="8 тэмдэгт байх ёстой" data-pristine-required-message="Багшийн код хоосон байж болохгүй"/>
+                                <input type="integer" name="code" class="input w-full border mt-2" minlength="8" maxlength="8" required data-pristine-integer-message="Тоо оруулна уу" data-pristine-minlength-message="8 тэмдэгт байх ёстой" data-pristine-maxlength-message="8 тэмдэгт байх ёстой" data-pristine-required-message="Багшийн код хоосон байж болохгүй"/>
                             </div>
                             <div class="input-form mt-3">
                                 <label class="flex flex-col sm:flex-row">
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div class="flex justify-end mt-4">
-                        <button type="button" onclick="window.location.href='{{ route('teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
+                        <button type="button" onclick="window.location.href='{{ route('admin-teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
                         <button type="submit" name="action" value="save_and_new" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save_and_new') }}</button> 
                         <button type="submit" name="action" value="save" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save') }}</button>
                     </div>

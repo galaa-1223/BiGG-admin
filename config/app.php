@@ -19,6 +19,32 @@ return [
             'title' => 'Хянах самбар',
             'link' => '/admin/dashboard'
         ],
+        'school' => [
+            'icon' => 'package',
+            'page_name' => 'school',
+            'title' => 'Сургууль',
+            'link' => null,
+            'sub_menu' => [
+                'tenhim' => [
+                    'icon' => 'menu',
+                    'page_name' => 'tenhim',
+                    'title' => 'Тэнхим',
+                    'link' => '/admin/tenhim'
+                ],
+                'mergejil' => [
+                    'icon' => 'codesandbox',
+                    'page_name' => 'mergejil',
+                    'title' => 'Мэргэжил',
+                    'link' => '/admin/mergejil'
+                ],
+                'mergejil_bagsh' => [
+                    'icon' => 'codepen',
+                    'page_name' => 'mergejil_bagsh',
+                    'title' => 'Мэргэжил багш',
+                    'link' => '/admin/mergejil_bagsh'
+                ]
+            ]
+        ],
         'teachers' => [
             'icon' => 'user',
             'page_name' => 'teachers',
@@ -31,7 +57,7 @@ return [
                     'title' => 'Багш нэмэх',
                     'link' => '/admin/teachers/add'
                 ],
-                'news-lists' => [
+                'teachers-lists' => [
                     'icon' => 'user',
                     'page_name' => 'teachers-lists',
                     'title' => 'Багш жагсаалт',
@@ -51,7 +77,7 @@ return [
                     'title' => 'Оюутан нэмэх',
                     'link' => '/admin/students/add'
                 ],
-                'news-lists' => [
+                'students-lists' => [
                     'icon' => 'list',
                     'page_name' => 'students-lists',
                     'title' => 'Оюутан жагсаалт',
@@ -59,23 +85,43 @@ return [
                 ]
             ]
         ],
-        'class' => [
+        'angi' => [
             'icon' => 'briefcase',
-            'page_name' => 'class',
+            'page_name' => 'angi',
             'title' => 'Анги',
             'link' => null,
             'sub_menu' => [
-                'class' => [
+                'angi' => [
                     'icon' => 'plus',
-                    'page_name' => 'class-add',
+                    'page_name' => 'angi-add',
                     'title' => 'Анги нэмэх',
-                    'link' => '/admin/class/add'
+                    'link' => '/admin/angi/add'
+                ],
+                'angi-lists' => [
+                    'icon' => 'list',
+                    'page_name' => 'angi-lists',
+                    'title' => 'Анги жагсаалт',
+                    'link' => '/admin/angi'
+                ]
+            ]
+        ],
+        'hicheel' => [
+            'icon' => 'book',
+            'page_name' => 'hicheel',
+            'title' => 'Хичээл',
+            'link' => null,
+            'sub_menu' => [
+                'hicheel' => [
+                    'icon' => 'plus',
+                    'page_name' => 'hicheel-add',
+                    'title' => 'Хичээл нэмэх',
+                    'link' => '/admin/hicheel/add'
                 ],
                 'news-lists' => [
                     'icon' => 'list',
-                    'page_name' => 'class-lists',
-                    'title' => 'Анги жагсаалт',
-                    'link' => '/admin/class'
+                    'page_name' => 'hicheel-lists',
+                    'title' => 'Хичээл жагсаалт',
+                    'link' => '/admin/hicheel'
                 ]
             ]
         ],
@@ -192,21 +238,41 @@ return [
         ],
         'class' => [
             'icon' => 'briefcase',
-            'page_name' => 'class',
+            'page_name' => 'angi',
             'title' => 'Анги',
             'link' => null,
             'sub_menu' => [
                 'class' => [
                     'icon' => 'plus',
-                    'page_name' => 'class-add',
+                    'page_name' => 'angi-add',
                     'title' => 'Анги нэмэх',
-                    'link' => '/department/class/add'
+                    'link' => '/department/angi/add'
                 ],
                 'news-lists' => [
                     'icon' => 'list',
-                    'page_name' => 'class-lists',
+                    'page_name' => 'angi-lists',
                     'title' => 'Анги жагсаалт',
-                    'link' => '/department/class'
+                    'link' => '/department/angi'
+                ]
+            ]
+        ],
+        'class' => [
+            'icon' => 'book-open',
+            'page_name' => 'lesson',
+            'title' => 'Хичээл',
+            'link' => null,
+            'sub_menu' => [
+                'class' => [
+                    'icon' => 'plus',
+                    'page_name' => 'lesson-add',
+                    'title' => 'Хичээл нэмэх',
+                    'link' => '/department/lesson/add'
+                ],
+                'news-lists' => [
+                    'icon' => 'list',
+                    'page_name' => 'lesson-lists',
+                    'title' => 'Хичээл жагсаалт',
+                    'link' => '/department/lesson'
                 ]
             ]
         ],

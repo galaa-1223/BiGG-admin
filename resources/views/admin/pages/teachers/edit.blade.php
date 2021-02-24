@@ -8,7 +8,7 @@
     @endif
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-            <form class="validate-form-teacher" action="{{ route('teachers-edit', $teacher->id) }}" method="post" enctype="multipart/form-data">
+            <form class="validate-form-teacher" action="{{ route('admin-teachers-edit', $teacher->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- BEGIN: Үндсэн мэдээлэл -->
             <div class="intro-y box lg:mt-5">
@@ -162,7 +162,7 @@
                         </div>
                     </div>
                     <div class="flex justify-end mt-4">
-                        <button type="button" onclick="window.location.href='{{ route('teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
+                        <button type="button" onclick="window.location.href='{{ route('admin-teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
                         <button type="submit" name="action" value="save_and_new" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save_and_new') }}</button> 
                         <button type="submit" name="action" value="save" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save') }}</button>
                     </div>

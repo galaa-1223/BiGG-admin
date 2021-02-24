@@ -26,6 +26,8 @@ class CreateTeachersTable extends Migration
             $table->string('phone', 50)->nullable();
             $table->string('image', 200)->nullable();
             $table->string('address', 500)->nullable();
+            $table->tinyInteger('mb_id');
+            $table->tinyInteger('t_id');
             $table->string('email', 50)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

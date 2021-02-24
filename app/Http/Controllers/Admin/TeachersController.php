@@ -158,4 +158,11 @@ class TeachersController extends Controller
 
     }
 
+    public function delete(Request $request)
+    {
+        $member = Teachers::findOrFail($request->get("t_id"));
+        $member->delete();
+        return redirect()->route('admin-teachers')->with('success', 'Багш амжилттай устгалаа!'); 
+    }
+
 }

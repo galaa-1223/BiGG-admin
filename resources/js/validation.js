@@ -68,7 +68,7 @@ import Toastify from "toastify-js";
                 e.preventDefault();
 
                 Toastify({
-                    text: "Багшийн бүртгэлийн формыг бүрэн бөглөнө үү!",
+                    text: "Формыг бүрэн бөглөнө үү!",
                     duration: 3000,
                     newWindow: true,
                     close: true,

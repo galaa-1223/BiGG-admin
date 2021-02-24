@@ -16,6 +16,7 @@ class CreateTeacherMergejilTable extends Migration
         Schema::create('teacher_mergejil', function (Blueprint $table) {
             $table->id();
             $table->string('ner', 500);
+            $table->timestamps();
             $table->engine = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
