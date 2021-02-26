@@ -6,15 +6,6 @@ import Tabulator from "tabulator-tables";
     "use strict";
 
     // Tabulator
-    const tabledata1 = [
-        {id: 1, name: "Oli ", money: "0", col: "red", dob: "14/05/1982"},
-        {id: 2, name: "Mary ", money: "0", col: "blue", dob: "14/05/1982"},
-        {id: 3, name: "Christine ", money: "0", col: "green", dob: "22/05/1982"},
-        {id: 4, name: "Brendon ", money: "0", col: "orange", dob: "01/08/1980"},
-        {id: 5, name: "Margret ", money: "0", col: "yellow", dob: "31/01/1999"},
-    ];
-
-    
     if (cash("#teacher_tabulator").length) {
         // Setup Tabulator
 
@@ -24,28 +15,28 @@ import Tabulator from "tabulator-tables";
             ajaxSorting: true,
             printAsHtml: true,
             printStyled: true,
-            // pagination: "remote",
-            // paginationSize: 10,
-            // paginationSizeSelector: [10, 20, 30, 40],
-            // layout: "fitColumns",
-            // responsiveLayout: "collapse",
+            pagination: "remote",
+            paginationSize: 10,
+            paginationSizeSelector: [10, 20, 30, 40],
+            layout: "fitColumns",
+            responsiveLayout: "collapse",
             placeholder: "Таарах бичлэг олдсонгүй",
             columns: [
-                // {
-                //     formatter: "responsiveCollapse",
-                //     width: 40,
-                //     minWidth: 30,
-                //     align: "center",
-                //     resizable: false,
-                //     headerSort: false,
-                // },
+                {
+                    formatter: "responsiveCollapse",
+                    width: 40,
+                    minWidth: 30,
+                    align: "center",
+                    resizable: false,
+                    headerSort: false,
+                },
 
                 // For HTML table
                 {
                     title: "БАГШ НЭР",
                     minWidth: 200,
                     responsive: 0,
-                    field: "name"
+                    field: "ner"
                 },
                 // {
                 //     title: "ТЭНХИМ",

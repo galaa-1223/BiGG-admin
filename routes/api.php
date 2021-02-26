@@ -18,8 +18,9 @@ use App\Http\Controllers\Api\TeachersController;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => '/v1'], function(){ 
+Route::group(['prefix' => '/v1'], function()
+{
     Route::get('teachers', [TeachersController::class, 'teacherList']);
-
+    // Route::get('teachers/{query}', [TeachersController::class, 'teacherQuery']);
     Route::post("teacher-login", [TeachersController::class, 'teacherLogin']);
 });

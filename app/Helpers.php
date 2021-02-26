@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Storage;
 
 if(!function_exists('activeMenu')) 
 {
-    function activeMenu($pageName, $type = 'app.admin_side_menu')
+    function activeMenu($pageName, $type = 'app.bigg_side_menu')
     {
         $firstPageName = '';
         $secondPageName = '';

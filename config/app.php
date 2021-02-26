@@ -12,12 +12,12 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-    'admin_side_menu' => [
+    'bigg_side_menu' => [
         'dashboard' => [
             'icon' => 'home',
             'page_name' => 'dashboard',
             'title' => 'Хянах самбар',
-            'link' => '/admin/dashboard'
+            'link' => '/bigg/dashboard'
         ],
         'school' => [
             'icon' => 'package',
@@ -29,19 +29,19 @@ return [
                     'icon' => 'menu',
                     'page_name' => 'tenhim',
                     'title' => 'Тэнхим',
-                    'link' => '/admin/tenhim'
+                    'link' => '/bigg/tenhim'
                 ],
                 'mergejil' => [
                     'icon' => 'codesandbox',
                     'page_name' => 'mergejil',
                     'title' => 'Мэргэжил',
-                    'link' => '/admin/mergejil'
+                    'link' => '/bigg/mergejil'
                 ],
                 'mergejil_bagsh' => [
                     'icon' => 'codepen',
                     'page_name' => 'mergejil_bagsh',
                     'title' => 'Мэргэжил багш',
-                    'link' => '/admin/mergejil_bagsh'
+                    'link' => '/bigg/mergejil_bagsh'
                 ]
             ]
         ],
@@ -55,13 +55,13 @@ return [
                     'icon' => 'user-plus',
                     'page_name' => 'teachers-add',
                     'title' => 'Багш нэмэх',
-                    'link' => '/admin/teachers/add'
+                    'link' => '/bigg/teachers/add'
                 ],
                 'teachers-lists' => [
                     'icon' => 'user',
                     'page_name' => 'teachers-lists',
                     'title' => 'Багш жагсаалт',
-                    'link' => '/admin/teachers'
+                    'link' => '/bigg/teachers'
                 ]
             ]
         ],
@@ -75,13 +75,13 @@ return [
                     'icon' => 'plus',
                     'page_name' => 'students-add',
                     'title' => 'Оюутан нэмэх',
-                    'link' => '/admin/students/add'
+                    'link' => '/bigg/students/add'
                 ],
                 'students-lists' => [
                     'icon' => 'list',
                     'page_name' => 'students-lists',
                     'title' => 'Оюутан жагсаалт',
-                    'link' => '/admin/students'
+                    'link' => '/bigg/students'
                 ]
             ]
         ],
@@ -95,13 +95,13 @@ return [
                     'icon' => 'plus',
                     'page_name' => 'angi-add',
                     'title' => 'Анги нэмэх',
-                    'link' => '/admin/angi/add'
+                    'link' => '/bigg/angi/add'
                 ],
                 'angi-lists' => [
                     'icon' => 'list',
                     'page_name' => 'angi-lists',
                     'title' => 'Анги жагсаалт',
-                    'link' => '/admin/angi'
+                    'link' => '/bigg/angi'
                 ]
             ]
         ],
@@ -115,13 +115,13 @@ return [
                     'icon' => 'plus',
                     'page_name' => 'hicheel-add',
                     'title' => 'Хичээл нэмэх',
-                    'link' => '/admin/hicheel/add'
+                    'link' => '/bigg/hicheel/add'
                 ],
                 'news-lists' => [
                     'icon' => 'list',
                     'page_name' => 'hicheel-lists',
                     'title' => 'Хичээл жагсаалт',
-                    'link' => '/admin/hicheel'
+                    'link' => '/bigg/hicheel'
                 ]
             ]
         ],
@@ -129,7 +129,7 @@ return [
             'icon' => 'calendar',
             'page_name' => 'huvaari',
             'title' => 'Хичээлийн хуваарь',
-            'link' => '/admin/huvaari'
+            'link' => '/bigg/huvaari'
         ],
         'study' => [
             'icon' => 'book-open',
@@ -141,13 +141,13 @@ return [
                     'icon' => 'watch',
                     'page_name' => 'students-add',
                     'title' => 'Ирц',
-                    'link' => '/admin/students/add'
+                    'link' => '/bigg/students/add'
                 ],
                 'news-lists' => [
                     'icon' => 'edit',
                     'page_name' => 'students-lists',
                     'title' => 'Явц',
-                    'link' => '/admin/students'
+                    'link' => '/bigg/students'
                 ]
             ]
         ],
@@ -161,19 +161,19 @@ return [
                     'icon' => 'watch',
                     'page_name' => 'ehicheel',
                     'title' => 'Хичээл',
-                    'link' => '/admin/students/add'
+                    'link' => '/bigg/students/add'
                 ],
                 'edaalgavar' => [
                     'icon' => 'edit',
                     'page_name' => 'edaalgavar',
                     'title' => 'Даалгавар',
-                    'link' => '/admin/students'
+                    'link' => '/bigg/students'
                 ],
                 'eshalgalt' => [
                     'icon' => 'edit',
                     'page_name' => 'eshalgalt',
                     'title' => 'Шалгалт',
-                    'link' => '/admin/students'
+                    'link' => '/bigg/students'
                 ]
             ]
         ],
@@ -181,20 +181,20 @@ return [
             'icon' => 'settings',
             'page_name' => 'settings',
             'title' => 'Тохиргоо',
-            'link' => '/admin/settings'
+            'link' => '/bigg/settings'
         ]
         
     ],
 
-    'admin_title' => 'Админ талбар',
+    'bigg_title' => 'Админ талбар',
 
 
-    'department_side_menu' => [
+    'manager_side_menu' => [
         'dashboard' => [
             'icon' => 'home',
             'page_name' => 'dashboard',
             'title' => 'Хянах самбар',
-            'link' => '/department/dashboard'
+            'link' => '/manager/dashboard'
         ],
         'teachers' => [
             'icon' => 'user',
@@ -206,13 +206,13 @@ return [
                     'icon' => 'user-plus',
                     'page_name' => 'teachers-add',
                     'title' => 'Багш нэмэх',
-                    'link' => '/department/teachers/add'
+                    'link' => '/manager/teachers/add'
                 ],
                 'news-lists' => [
                     'icon' => 'user',
                     'page_name' => 'teachers-lists',
                     'title' => 'Багш жагсаалт',
-                    'link' => '/department/teachers'
+                    'link' => '/manager/teachers'
                 ]
             ]
         ],
@@ -226,13 +226,13 @@ return [
                     'icon' => 'plus',
                     'page_name' => 'students-add',
                     'title' => 'Оюутан нэмэх',
-                    'link' => '/department/students/add'
+                    'link' => '/manager/students/add'
                 ],
                 'news-lists' => [
                     'icon' => 'list',
                     'page_name' => 'students-lists',
                     'title' => 'Оюутан жагсаалт',
-                    'link' => '/department/students'
+                    'link' => '/manager/students'
                 ]
             ]
         ],
@@ -246,13 +246,13 @@ return [
                     'icon' => 'plus',
                     'page_name' => 'angi-add',
                     'title' => 'Анги нэмэх',
-                    'link' => '/department/angi/add'
+                    'link' => '/manager/angi/add'
                 ],
                 'news-lists' => [
                     'icon' => 'list',
                     'page_name' => 'angi-lists',
                     'title' => 'Анги жагсаалт',
-                    'link' => '/department/angi'
+                    'link' => '/manager/angi'
                 ]
             ]
         ],
@@ -266,13 +266,13 @@ return [
                     'icon' => 'plus',
                     'page_name' => 'lesson-add',
                     'title' => 'Хичээл нэмэх',
-                    'link' => '/department/lesson/add'
+                    'link' => '/manager/lesson/add'
                 ],
                 'news-lists' => [
                     'icon' => 'list',
                     'page_name' => 'lesson-lists',
                     'title' => 'Хичээл жагсаалт',
-                    'link' => '/department/lesson'
+                    'link' => '/manager/lesson'
                 ]
             ]
         ],
@@ -280,7 +280,7 @@ return [
             'icon' => 'calendar',
             'page_name' => 'huvaari',
             'title' => 'Хичээлийн хуваарь',
-            'link' => '/department/huvaari'
+            'link' => '/manager/huvaari'
         ],
         'study' => [
             'icon' => 'book-open',
@@ -292,13 +292,13 @@ return [
                     'icon' => 'watch',
                     'page_name' => 'students-add',
                     'title' => 'Ирц',
-                    'link' => '/department/students/add'
+                    'link' => '/manager/students/add'
                 ],
                 'news-lists' => [
                     'icon' => 'edit',
                     'page_name' => 'students-lists',
                     'title' => 'Явц',
-                    'link' => '/department/students'
+                    'link' => '/manager/students'
                 ]
             ]
         ],
@@ -312,19 +312,19 @@ return [
                     'icon' => 'watch',
                     'page_name' => 'ehicheel',
                     'title' => 'Хичээл',
-                    'link' => '/department/students/add'
+                    'link' => '/manager/students/add'
                 ],
                 'edaalgavar' => [
                     'icon' => 'edit',
                     'page_name' => 'edaalgavar',
                     'title' => 'Даалгавар',
-                    'link' => '/department/students'
+                    'link' => '/manager/students'
                 ],
                 'eshalgalt' => [
                     'icon' => 'edit',
                     'page_name' => 'eshalgalt',
                     'title' => 'Шалгалт',
-                    'link' => '/department/students'
+                    'link' => '/manager/students'
                 ]
             ]
         ],
@@ -332,12 +332,12 @@ return [
             'icon' => 'settings',
             'page_name' => 'settings',
             'title' => 'Тохиргоо',
-            'link' => '/department/settings'
+            'link' => '/manager/settings'
         ]
         
     ],
 
-    'department_title' => 'Сургалтын алба талбар',
+    'manager_title' => 'Сургалтын алба талбар',
 
     'name' => env('APP_NAME', 'Laravel'),
 

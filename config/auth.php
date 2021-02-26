@@ -47,14 +47,14 @@ return [
             'hash' => false,
         ],
 
-        'admin' => [
+        'bigg' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'biggs',
         ],
 
-        'department' => [
+        'manager' => [
             'driver' => 'session',
-            'provider' => 'departments',
+            'provider' => 'managers',
         ],
     ],
 
@@ -81,14 +81,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'admins' => [
+        'biggs' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => App\Models\BiGG::class,
         ],
 
-        'departments' => [
+        'managers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Department::class,
+            'model' => App\Models\Manager::class,
         ],
     ],
 

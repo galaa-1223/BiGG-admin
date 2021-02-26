@@ -15,11 +15,13 @@ class TenhimSeeder extends Seeder
     public function run()
     {
         Tenhim::create([
-            'ner' => 'Ерөнхий эрдмийн тэнхим'
+            'ner' => 'Ерөнхий эрдмийн тэнхим',
+            'tovch' => 'ЕЭТ'
         ]);
 
         Tenhim::create([
-            'ner' => 'Техник технологийн тэнхим'
+            'ner' => 'Техник технологийн тэнхим',
+            'tovch' => 'TTT'
         ]);
     }
 }
