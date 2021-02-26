@@ -15,11 +15,19 @@ class TeacherMergejilSeeder extends Seeder
     public function run()
     {
         TeacherMergejil::create([
-            'ner' => 'Ерөнхий эрдмийн тэнхим'
+            'ner' => 'Компьютерийн багш'
         ]);
 
         TeacherMergejil::create([
-            'ner' => 'Техник технологийн тэнхим'
+            'ner' => 'Физикийн багш'
+        ]);
+
+        TeacherMergejil::create([
+            'ner' => 'Химийн багш'
+        ]);
+
+        TeacherMergejil::create([
+            'ner' => 'Биеийн тамирын багш'
         ]);
     }
 }

@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\TeachersController;
 // });
 
 Route::group(['prefix' => '/v1'], function(){ 
-    Route::get('all', [TeachersController::class, 'teacherList']);
+    Route::get('teachers', [TeachersController::class, 'teacherList']);
 
     Route::post("teacher-login", [TeachersController::class, 'teacherLogin']);
 });

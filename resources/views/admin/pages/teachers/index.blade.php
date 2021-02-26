@@ -6,57 +6,77 @@
             <i data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> {!! \Session::get('success') !!}
         </div>
     @endif
-    <h2 class="intro-y text-lg font-medium mt-10">Багшийн талбар</h2>
-    <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button onclick="window.location.href='{{ route('teachers') }}'" class="button text-white bg-theme-1 shadow-md mr-2">Багш нэмэх</button>
-            <div class="hidden md:block mx-auto text-gray-600">Нийт багшийн тоо:</div>
-            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-                <div class="w-56 relative text-gray-700 dark:text-gray-300">
-                    <input type="text" class="input w-56 box pr-10 placeholder-theme-13" placeholder="{{ __('site.search') }}...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
+    <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">Багшийн талбар</h2>
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <button class="button text-white bg-theme-1 shadow-md mr-2">Багш нэмэх</button>
+            <div class="dropdown ml-auto sm:ml-0">
+                <button class="dropdown-toggle button px-2 box text-gray-700 dark:text-gray-300">
+                    <span class="w-5 h-5 flex items-center justify-center">
+                        <i class="w-4 h-4" data-feather="plus"></i>
+                    </span>
+                </button>
+                <div class="dropdown-box w-40">
+                    <div class="dropdown-box__content box dark:bg-dark-1 p-2">
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md">
+                            <i data-feather="file-plus" class="w-4 h-4 mr-2"></i> Тэнхим нэмэх
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- BEGIN: Багшийн талбар -->
-            @foreach($teachers as $teacher)
-            <div class="intro-y col-span-12 md:col-span-6">
-                <div class="box">
-                    <div class="flex flex-col lg:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                        <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                            <img alt="{{ $teacher->ovog }} {{ $teacher->ner }}" class="rounded-full" src="{{ ($teacher->image == null) ? asset('dist/images/Blank-avatar.png') : asset('uploads/teachers/thumbs/'.$teacher->image)}}">
-                        </div>
-                        <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">{{ Str::substr($teacher->ovog, 0, 1) }}. {{ $teacher->ner }}</a>
-                            <div class="text-gray-600 text-xs mt-0.5">jobs</div>
-                        </div>
-                        <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                            <a href="{{ route('teachers-edit', $teacher->id) }}" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip" title="{{ __('site.edit') }}">
-                                <i class="w-3 h-3 fill-current" data-feather="edit-2"></i>
+    </div>
+    <!-- BEGIN: HTML Table Data -->
+    <div class="intro-y box p-5 mt-5">
+        <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
+            <form class="xl:flex sm:mr-auto" id="tabulator-html-filter-form">
+                <div class="sm:flex items-center sm:mr-4">
+                    <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Талбар</label>
+                    <select class="input w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto border" id="tabulator-html-filter-field">
+                        <option value="name">Багшийн нэр</option>
+                        <option value="tenhim">Тэнхим</option>
+                    </select>
+                </div>
+                <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
+                    <input type="text" class="input w-full sm:w-80 xxl:w-full mt-2 sm:mt-0 border" id="tabulator-html-filter-value" placeholder="Хайлт үг...">
+                </div>
+                <div class="mt-2 xl:mt-0">
+                    <button type="button" class="button w-full sm:w-40 bg-theme-1 text-white" id="tabulator-html-filter-go">Хайлт хийх</button>
+                    <button type="button" class="button w-full sm:w-20 mt-2 sm:mt-0 sm:ml-1 bg-gray-200 text-gray-600 dark:bg-dark-5 dark:text-gray-300" id="tabulator-html-filter-reset">Арилгах</button>
+                </div>
+            </form>
+            <div class="flex mt-5 sm:mt-0">
+                <button class="button w-1/2 sm:w-auto flex items-center border text-gray-700 mr-2 dark:bg-dark-5 dark:text-gray-300" id="tabulator-print">
+                    <i data-feather="printer" class="w-4 h-4 mr-2"></i> Хэвлэх
+                </button>
+                <div class="dropdown w-1/2 sm:w-auto">
+                    <button class="dropdown-toggle button w-full sm:w-auto flex items-center border text-gray-700 dark:bg-dark-5 dark:text-gray-300">
+                        <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Хөрвүүлэх <i data-feather="chevron-down" class="w-4 h-4 ml-auto sm:ml-2"></i>
+                    </button>
+                    <div class="dropdown-box w-40">
+                        <div class="dropdown-box__content box dark:bg-dark-1 p-2">
+                            <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" id="tabulator-export-csv">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> CSV Файл
                             </a>
-                            <a class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-dark-5 ml-2 text-gray-500 zoom-in tooltip delete_button" href="javascript:;" data-id="{{ $teacher->id }}" data-target="#delete-confirmation-modal" title="{{ __('site.delete') }}">
-                                    <i class="w-3 h-3 fill-current" data-feather="trash"></i>
+                            <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" id="tabulator-export-json">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> JSON Файл
+                            </a>
+                            <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" id="tabulator-export-xlsx">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> XLSX Файл
+                            </a>
+                            <a href="javascript:;" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" id="tabulator-export-html">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> HTML Файл
                             </a>
                         </div>
-                    </div>
-                    <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                        <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                            <div class="flex text-gray-600 text-xs">
-                                <div class="mr-auto">Анкет бөглөлт</div>
-                                <div>20%</div>
-                            </div>
-                            <div class="w-full h-1 mt-2 bg-gray-400 dark:bg-dark-1 rounded-full">
-                                <div class="w-1/4 h-full bg-theme-1 dark:bg-theme-10 rounded-full"></div>
-                            </div>
-                        </div>
-                        <button class="button button--sm text-white bg-theme-1 mr-2">Захиа илгээх</button>
-                        <button class="button button--sm text-gray-700 border border-gray-300 dark:border-dark-5 dark:text-gray-300">Профайл</button>
                     </div>
                 </div>
             </div>
-            @endforeach
-        <!-- END: Багшийн талбар -->
+        </div>
+        <div class="overflow-x-auto scrollbar-hidden">
+            <div class="mt-5 table-report table-report--tabulator" id="teacher_tabulator"></div>
+        </div>
     </div>
+    <!-- END: HTML Table Data -->
     <!-- BEGIN: Delete Confirmation Modal -->
     <div class="modal" id="delete-confirmation-modal">
         <div class="modal__content">
