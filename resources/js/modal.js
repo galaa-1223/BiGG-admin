@@ -20,6 +20,10 @@ import Toastify from "toastify-js";
         return zIndex;
     }
 
+    function galaa(){
+        alert('Galaa');
+    }
+
     // Get scrollbar width
     function getScrollbarWidth(el) {
         return window.innerWidth - cash(el)[0].clientWidth;

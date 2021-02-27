@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Angi;
 
@@ -23,7 +24,8 @@ class AngiController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'angiud' => $angi
+            'angiud' => $angi,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -37,7 +39,8 @@ class AngiController extends Controller
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
-            'page_name' => $pageName
+            'page_name' => $pageName,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -82,7 +85,8 @@ class AngiController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'teacher' => $teacher
+            'teacher' => $teacher,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 

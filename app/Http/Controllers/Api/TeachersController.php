@@ -64,9 +64,9 @@ class TeachersController extends Controller
     {
         $teacher = array();
 
-        if(!$request->has('sorters')){
+        if(!$request->has('sorters') && !$request->has('filters')){
 
-            $teacher = Teachers::select('teachers.id', 'teachers.ner', 'teachers.image','teachers.code', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
+            $teacher = Teachers::select('teachers.id', 'teachers.ner', 'teachers.ovog', 'teachers.image','teachers.code', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
                             ->join('teacher_mergejil', 'teacher_mergejil.id', '=', 'teachers.mb_id')
                             ->join('tenhim', 'tenhim.id', '=', 'teachers.t_id')
                             ->orderBy('ner', 'asc')
@@ -79,8 +79,24 @@ class TeachersController extends Controller
             // $response->header('charset', 'utf-8');
 
             // return $response;
+        }elseif($request->has('filters') && !$request->has('sorters')){
+            // if(!$request->filters[0]['field']){
+                $teacher = Teachers::select('teachers.id', 'teachers.ner', 'teachers.ovog', 'teachers.image','teachers.code', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
+                                ->join('teacher_mergejil', 'teacher_mergejil.id', '=', 'teachers.mb_id')
+                                ->join('tenhim', 'tenhim.id', '=', 'teachers.t_id')
+                                ->where($request->filters[0]['field'], $request->filters[0]['type'], $request->filters[0]['value']."%")
+                                ->orderBy('ner', 'asc')
+                                ->get();
+            // }else{
+            //     $teacher = Teachers::select('teachers.id', 'teachers.ner', 'teachers.ovog', 'teachers.image','teachers.code', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
+            //                     ->join('teacher_mergejil', 'teacher_mergejil.id', '=', 'teachers.mb_id')
+            //                     ->join('tenhim', 'tenhim.id', '=', 'teachers.t_id')
+            //                     ->orderBy('ner', 'asc')
+            //                     ->get();
+            // }
+
         }else{
-            $teacher = Teachers::select('teachers.id', 'teachers.ner', 'teachers.image','teachers.code', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
+            $teacher = Teachers::select('teachers.id', 'teachers.ner', 'teachers.ovog', 'teachers.image','teachers.code', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
                             ->join('teacher_mergejil', 'teacher_mergejil.id', '=', 'teachers.mb_id')
                             ->join('tenhim', 'tenhim.id', '=', 'teachers.t_id')
                             ->orderBy($request->sorters[0]['field'], $request->sorters[0]['dir'])

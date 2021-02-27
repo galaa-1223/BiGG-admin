@@ -19,6 +19,8 @@ return [
 
     // C
     'cancel'            => 'Болих',
+    'change_password'   => 'Нууц үг солих',
+    
     // D
     'delete'            => 'Устгах',
 

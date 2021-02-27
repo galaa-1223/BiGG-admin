@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\MergejilBagsh;
 
@@ -23,7 +24,8 @@ class MergejilBagshController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'mergejil_bagshs' => $mergejil_bagsh
+            'mergejil_bagshs' => $mergejil_bagsh,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -37,7 +39,8 @@ class MergejilBagshController extends Controller
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
-            'page_name' => $pageName
+            'page_name' => $pageName,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -78,7 +81,8 @@ class MergejilBagshController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'teacher' => $teacher
+            'teacher' => $teacher,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 

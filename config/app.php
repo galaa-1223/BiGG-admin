@@ -42,7 +42,14 @@ return [
                     'page_name' => 'mergejil_bagsh',
                     'title' => 'Мэргэжил багш',
                     'link' => '/bigg/mergejil_bagsh'
+                ],
+                'hicheels' => [
+                    'icon' => 'book',
+                    'page_name' => 'hicheels',
+                    'title' => 'Хичээлүүд',
+                    'link' => '/bigg/hicheels'
                 ]
+                
             ]
         ],
         'teachers' => [
@@ -62,6 +69,12 @@ return [
                     'page_name' => 'teachers-lists',
                     'title' => 'Багш жагсаалт',
                     'link' => '/bigg/teachers'
+                ],
+                'teachers-hicheels' => [
+                    'icon' => 'book',
+                    'page_name' => 'teachers-hicheels',
+                    'title' => 'Хичээл',
+                    'link' => '/bigg/hicheel'
                 ]
             ]
         ],
@@ -102,26 +115,6 @@ return [
                     'page_name' => 'angi-lists',
                     'title' => 'Анги жагсаалт',
                     'link' => '/bigg/angi'
-                ]
-            ]
-        ],
-        'hicheel' => [
-            'icon' => 'book',
-            'page_name' => 'hicheel',
-            'title' => 'Хичээл',
-            'link' => null,
-            'sub_menu' => [
-                'hicheel' => [
-                    'icon' => 'plus',
-                    'page_name' => 'hicheel-add',
-                    'title' => 'Хичээл нэмэх',
-                    'link' => '/bigg/hicheel/add'
-                ],
-                'news-lists' => [
-                    'icon' => 'list',
-                    'page_name' => 'hicheel-lists',
-                    'title' => 'Хичээл жагсаалт',
-                    'link' => '/bigg/hicheel'
                 ]
             ]
         ],

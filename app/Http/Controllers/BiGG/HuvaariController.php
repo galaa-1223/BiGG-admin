@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Huvaari;
 
@@ -23,7 +24,8 @@ class HuvaariController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'huvaari' => $huvaari
+            'huvaari' => $huvaari,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -37,122 +39,23 @@ class HuvaariController extends Controller
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
-            'page_name' => $pageName
+            'page_name' => $pageName,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
-    public function store(Request $request)
+    public function bagsh($id)
     {
-
-        $member = new Huvaari;
-
-        if ($request->hasFile('image')) {
-
-            $date = Str::slug(Carbon::now());
-            $imageName = Str::slug($request->code) . '-' . $date;
-            $image = Image::make($request->file('image'))->save(public_path('/uploads/huvaari/') . $imageName . '.jpg')->encode('jpg','50');
-            $image->fit(300, 300);
-            $image->save(public_path('/uploads/huvaari/thumbs/' .$imageName.'.jpg'));
-            $member->image = $imageName.'.jpg';
-        }
-
-        $member->ner = Str::ucfirst($request->get("ner"));
-        $member->ovog = Str::ucfirst($request->get("ovog"));
-        $member->urag = Str::ucfirst($request->get("urag"));
-        $member->code = $request->get("code");
-        $member->register = $request->get("register");
-        $member->huis = $request->get("huis");
-        $member->tursun = $request->get("tursun");
-        $member->email = $request->get("email");
-        $member->password = $request->get("password");
-        $member->phone = $request->get("phone");
-        $member->address = $request->get("address");
-
-
-        $member->save();
-
-        switch ($request->input('action')) {
-            case 'save':
-                return redirect()->route('huvaari')->with('success', 'Хичээл амжилттай нэмэгдлээ!'); 
-                break;
-    
-            case 'save_and_new':
-                return back()->with('success', 'Хичээл амжилттай нэмэгдлээ!');
-                break;
-    
-            case 'preview':
-                echo 'preview';
-                break;
-        }
-    }
-
-    public function edit($id)
-    {
-        $pageTitle = 'Хичээл засварлах';
+        $pageTitle = 'Багшийн хуваарь';
         $pageName = 'huvaari';
-
-        $teacher = Huvaari::findOrFail($id);
 
         $activeMenu = activeMenu($pageName);
 
-        return view('bigg/pages/'.$pageName.'/edit', [
+        return view('bigg/pages/'.$pageName.'/huvaari', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'teacher' => $teacher
+            'user' => Auth::guard('bigg')->user()
         ]);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $member = Huvaari::findOrFail($id);
-
-        if ($request->hasFile('image')) {
-
-            $date = Str::slug(Carbon::now());
-            $imageName = Str::slug($request->code) . '-' . $date;
-            $image = Image::make($request->file('image'))->save(public_path('/uploads/huvaari/') . $imageName . '.jpg')->encode('jpg','50');
-            $image->fit(300, 300);
-            $image->save(public_path('/uploads/huvaari/thumbs/' .$imageName.'.jpg'));
-            $member->image = $imageName.'.jpg';
-        }
-
-        $member->ner = Str::ucfirst($request->get("ner"));
-        $member->ovog = Str::ucfirst($request->get("ovog"));
-        $member->urag = Str::ucfirst($request->get("urag"));
-        $member->code = $request->get("code");
-        $member->register = $request->get("register");
-        $member->huis = $request->get("huis");
-        $member->tursun = $request->get("tursun");
-        $member->email = $request->get("email");
-        $member->password = $request->get("password");
-        $member->phone = $request->get("phone");
-        $member->address = $request->get("address");
-        $member->updated_at = Carbon::now();
-
-        $member->save();
-
-        switch ($request->input('action')) {
-            case 'save':
-                return redirect()->route('huvaari')->with('success', 'Хичээл засварлагдлаа нэмэгдлээ!'); 
-                break;
-    
-            case 'save_and_new':
-                return back()->with('success', 'Хичээл засварлагдлаа нэмэгдлээ!');
-                break;
-    
-            case 'preview':
-                echo 'preview';
-                break;
-        }
-    }
-
-    public function destroy(Request $request, $id)
-    {
-        $member = Huvaari::findOrFail($id);
-        $member->delete();
-
-        return redirect()->route('huvaari')->with('success', 'Хичээл устгагдлаа нэмэгдлээ!'); 
-
     }
 }

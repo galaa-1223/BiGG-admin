@@ -28,13 +28,19 @@
     </div>
     <!-- BEGIN: HTML Table Data -->
     <div class="intro-y box p-5 mt-5">
+        @if(!count($teachers))
+            <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-17 text-theme-11">
+                <i data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> Мэдээлэл алга байна!
+            </div>
+        @else
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
             <form class="xl:flex sm:mr-auto" id="tabulator-html-filter-form">
                 <div class="sm:flex items-center sm:mr-4">
                     <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Талбар</label>
                     <select class="input w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto border" id="tabulator-html-filter-field">
-                        <option value="name">Багшийн нэр</option>
-                        <option value="tenhim">Тэнхим</option>
+                        <option value="teachers.ner">Багшийн нэр</option>
+                        <option value="tenhim.ner">Тэнхим</option>
+                        <option value="teachers.code">Багшийн код</option>
                     </select>
                 </div>
                 <div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
@@ -75,6 +81,7 @@
         <div class="overflow-x-auto scrollbar-hidden">
             <div class="mt-5 table-report table-report--tabulator" id="teacher_tabulator"></div>
         </div>
+        @endif
     </div>
     <!-- END: HTML Table Data -->
     <!-- BEGIN: Delete Confirmation Modal -->
@@ -90,7 +97,7 @@
                 </div>
                 <div class="px-5 pb-8 text-center">
                     <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 mr-1">{{ __('site.cancel') }}</button>
-                    <button type="submit" class="modal_delete_button button w-24 bg-theme-6 text-white">{{ __('site.delete') }}</button>
+                    <button type="submit" class="modal_delete_button_tabulator button w-24 bg-theme-6 text-white">{{ __('site.delete') }}</button>
                 </div>
             </form>
         </div>

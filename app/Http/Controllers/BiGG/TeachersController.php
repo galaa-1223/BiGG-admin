@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Image;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Teachers;
 
@@ -25,7 +26,8 @@ class TeachersController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'teachers' => $teachers
+            'teachers' => $teachers,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -39,7 +41,8 @@ class TeachersController extends Controller
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
-            'page_name' => $pageName
+            'page_name' => $pageName,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 
@@ -101,7 +104,8 @@ class TeachersController extends Controller
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'teacher' => $teacher
+            'teacher' => $teacher,
+            'user' => Auth::guard('bigg')->user()
         ]);
     }
 

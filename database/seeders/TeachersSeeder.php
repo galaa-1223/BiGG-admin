@@ -28,6 +28,7 @@ class TeachersSeeder extends Seeder
             'address' => null,
             'mb_id' => 1,
             't_id' => 2,
+            'status' => 1,
             'email' => 'teacher1@yahoo.com',
         ]);
 
@@ -45,6 +46,7 @@ class TeachersSeeder extends Seeder
             'address' => null,
             'mb_id' => 2,
             't_id' => 2,
+            'status' => 1,
             'email' => 'teacher2@yahoo.com',
         ]);
 
@@ -62,6 +64,43 @@ class TeachersSeeder extends Seeder
             'address' => null,
             'mb_id' => 3,
             't_id' => 1,
+            'status' => 1,
+            'email' => 'teacher3@yahoo.com',
+        ]);
+
+        Teachers::create([
+            'ner' => 'Жавзмаа',
+            'ovog' => 'Шийрэв',
+            'urag' => 'Илжгэн',
+            'tursun' => '1955-03-29',
+            'register' => 'ХЫ85032921',
+            'huis' => 'em',
+            'code' => '12345670',
+            'password' => '12345678',
+            'phone' => '99118811',
+            'image' => null,
+            'address' => null,
+            'mb_id' => 3,
+            't_id' => 1,
+            'status' => 3,
+            'email' => 'teacher3@yahoo.com',
+        ]);
+
+        Teachers::create([
+            'ner' => 'Мөнхсайхан',
+            'ovog' => 'Дэлгэр',
+            'urag' => 'Илжгэн',
+            'tursun' => '1990-02-19',
+            'register' => 'ХЫ85032921',
+            'huis' => 'em',
+            'code' => '12345699',
+            'password' => '12345678',
+            'phone' => '99118811',
+            'image' => null,
+            'address' => null,
+            'mb_id' => 3,
+            't_id' => 1,
+            'status' => 4,
             'email' => 'teacher3@yahoo.com',
         ]);
     }

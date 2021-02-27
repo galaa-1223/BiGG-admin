@@ -12,6 +12,7 @@ use App\Http\Controllers\BiGG\HuvaariController;
 use App\Http\Controllers\BiGG\MergejilController;
 use App\Http\Controllers\BiGG\MergejilBagshController;
 use App\Http\Controllers\BiGG\TenhimController;
+use App\Http\Controllers\BiGG\SettingsController;
 
 use App\Http\Controllers\Auth\ManagerAuthController;
 use App\Http\Controllers\Manager\ManagerController;
@@ -110,10 +111,16 @@ Route::group(['prefix' => 'bigg','middleware' => 'biggauth'], function () {
 
 	// Huvaari
 	Route::get('huvaari',[HuvaariController::class, 'index'])->name('bigg-huvaari');
+	Route::get('huvaari/bagsh/{bagshId}',[HuvaariController::class, 'bagsh'])->name('bigg-huvaari-bagsh');
 
 	// Students
 	Route::get('students',[StudentsController::class, 'index'])->name('bigg-students');
 	Route::get('students/add',[StudentsController::class, 'add'])->name('bigg-students-add');
+
+	// Settings
+	Route::get('settings',[SettingsController::class, 'index'])->name('bigg-settings');
+	Route::get('settings/password',[SettingsController::class, 'password'])->name('bigg-settings-password');
+	Route::get('settings/huvaari',[SettingsController::class, 'huvaari'])->name('bigg-settings-huvaari');
 });
 
 // Manager Login

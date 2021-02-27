@@ -28,6 +28,7 @@ class CreateTeachersTable extends Migration
             $table->string('address', 500)->nullable();
             $table->tinyInteger('mb_id');
             $table->tinyInteger('t_id');
+            $table->enum('status', [1, 2, 3, 4])->default(1)->comment('1 - Ажиллаж байгаа,/n 2 - Халагдсан,/n 3 - Тэтгэвэрт/n 4 - Цагийн багш');
             $table->string('email', 50)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
