@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMergejilTable extends Migration
+class CreateMergejilTurulTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateMergejilTable extends Migration
      */
     public function up()
     {
-        Schema::create('mergejil', function (Blueprint $table) {
+        Schema::create('mergejil_turul', function (Blueprint $table) {
             $table->id();
             $table->string('ner', 300);
-            $table->tinyInteger('bolovsrol');
-            $table->string('jil', 5);
             $table->timestamps();
             $table->engine = 'MyISAM';
             $table->charset = 'utf8';
@@ -32,6 +30,6 @@ class CreateMergejilTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mergejil');
+        Schema::dropIfExists('mergejil_turul');
     }
 }

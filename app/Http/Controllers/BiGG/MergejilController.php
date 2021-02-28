@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Mergejil;
+use App\Models\MergejilTurul;
 
 class MergejilController extends Controller
 {
@@ -16,7 +17,8 @@ class MergejilController extends Controller
     {
         $pageTitle = 'Мэргэжил';
         $pageName = 'mergejil';
-        $mergejil = Mergejil::orderBy('ner', 'asc')->paginate(9);
+
+        $mergejil = Mergejil::orderBy('ner', 'asc')->get();
 
         $activeMenu = activeMenu($pageName);
 
@@ -34,12 +36,15 @@ class MergejilController extends Controller
         $pageTitle = 'Мэргэжил нэмэх';
         $pageName = 'mergejil';
 
+        $bolovsrol = MergejilTurul::orderBy('ner', 'asc')->get();
+
         $activeMenu = activeMenu($pageName);
 
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
+            'bolovsrols' => $bolovsrol,
             'user' => Auth::guard('bigg')->user()
         ]);
     }
@@ -50,12 +55,14 @@ class MergejilController extends Controller
         $mergejil = new Mergejil;
 
         $mergejil->ner = Str::ucfirst($request->ner);
+        $mergejil->bolovsrol = $request->bolovsrol;
+        $mergejil->jil = $request->jil;
 
         $mergejil->save();
 
         switch ($request->input('action')) {
             case 'save':
-                return redirect()->route('bigg-mergejil')->with('success', 'Мэргэжил амжилттай нэмэгдлээ!'); 
+                return redirect()->route('bigg-mergejil')->with('success', 'Мэргэжил амжилттай нэмэгдлээ!');
                 break;
     
             case 'save_and_new':

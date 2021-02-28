@@ -9,6 +9,10 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Angi;
+use App\Models\Tenhim;
+use App\Models\Teachers;
+use App\Models\Mergejil;
+use App\Models\MergejilTurul;
 
 class AngiController extends Controller
 {
@@ -16,7 +20,11 @@ class AngiController extends Controller
     {
         $pageTitle = 'Ангиуд';
         $pageName = 'angi';
-        $angi = Angi::orderBy('created_at', 'desc')->paginate(9);
+
+        $angi = Angi::select('angi.*', 'teachers.ner as bagsh', 'teachers.ovog')
+                            ->join('teachers', 'teachers.id', '=', 'angi.b_id')
+                            ->orderBy('ner', 'asc')
+                            ->get();
 
         $activeMenu = activeMenu($pageName);
 
@@ -34,13 +42,22 @@ class AngiController extends Controller
         $pageTitle = 'Анги нэмэх';
         $pageName = 'angi';
 
+        // $tenhims = Tenhim::orderBy('ner', 'desc')->get();
+        $teachers = Teachers::orderBy('ner', 'desc')->get();
+
+        $mergejil = Mergejil::orderBy('ner', 'asc')->get();
+        $bolovsrol = MergejilTurul::orderBy('ner', 'asc')->get();
+
         $activeMenu = activeMenu($pageName);
 
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
-            'user' => Auth::guard('bigg')->user()
+            'user' => Auth::guard('bigg')->user(),
+            'mergejils' => $mergejil,
+            'bolovsrols' => $bolovsrol,
+            'teachers' => $teachers
         ]);
     }
 

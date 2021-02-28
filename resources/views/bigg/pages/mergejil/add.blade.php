@@ -21,6 +21,40 @@
                         </label>
                         <input type="text" name="ner" placeholder="Авто засварчин" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Багшийн мэргэжлийн нэр хоосон байж болохгүй"/>
                     </div>
+                    <div class="input-form mt-3">
+                        <label class="flex flex-col sm:flex-row">
+                        Боловсрол: 
+                        </label>
+                        <div class="mt-2">
+                            <select name="bolovsrol" data-search="true" class="tail-select w-full">
+                                @if(count($bolovsrols))
+                                    @foreach($bolovsrols as $bolovsrol):
+                                        <option value="{{ $bolovsrol->id }}">{{ $bolovsrol->ner }}</option>
+                                    @endforeach;
+                                @else
+                                    <option value="">Хоосон байна</option>
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-form mt-3">
+                        <label class="flex flex-col sm:flex-row">
+                            Суралцах жил: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600"></span>
+                        </label>
+                        <div class="sm:grid grid-cols-3 gap-2">
+                            <div class="relative mt-2">
+                                    <select name="jil" class="tail-select w-full">
+                                        <option value="1">1 жил</option>
+                                        <option value="1.5">1.5 жил</option>
+                                        <option value="2">2 жил</option>
+                                        <option value="2.5">2.5 жил</option>
+                                        <option value="3">3 жил</option>
+                                        <option value="3.5">3.5 жил</option>
+                                        <option value="4">4 жил</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="flex justify-end mt-4">
                         <button type="button" onclick="window.location.href='{{ route('bigg-mergejil') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
                         <button type="submit" name="action" value="save_and_new" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save_and_new') }}</button> 

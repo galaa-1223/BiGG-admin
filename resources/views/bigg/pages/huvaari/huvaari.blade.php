@@ -12,45 +12,66 @@
             
         </div>
     </div>
-    <!-- BEGIN: HTML Table Data -->
-    <div class="intro-y box p-5 mt-5">
-        <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
-                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">First Name</th>
-                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Last Name</th>
-                        <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Username</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border">1</td>
-                        <td class="border">Angelina</td>
-                        <td class="border">Jolie</td>
-                        <td class="border">@angelinajolie</td>
-                    </tr>
-                    <tr>
-                        <td class="border">2</td>
-                        <td class="border">Brad</td>
-                        <td class="border">Pitt</td>
-                        <td class="border">@bradpitt</td>
-                    </tr>
-                    <tr>
-                        <td class="border">3</td>
-                        <td class="border">Charlie</td>
-                        <td class="border">Hunnam</td>
-                        <td class="border">@charliehunnam</td>
-                    </tr>
-                </tbody>
-            </table>
+     <!-- BEGIN: Hoverable Table -->
+     <div class="intro-y box mt-5">
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
+            <h2 class="font-medium text-base mr-auto">Hoverable Table</h2>
         </div>
-        <div class="overflow-x-auto scrollbar-hidden">
-            <div class="mt-5 table-report table-report--tabulator" id="tabulator"></div>
+        <div class="p-5" id="hoverable-table">
+            <div class="preview">
+                <div class="overflow-x-auto">
+                    <table class="table border-yellow-500" style="border:1px solid red !important">
+                        <thead>
+                            <tr>
+                                <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Цаг / Өдөр</th>
+                                <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Даваа</th>
+                                <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Мягмар</th>
+                                <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Лхагва</th>
+                                <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Пүрэв</th>
+                                <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Баасан</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $date = explode(":", config('settings.huvaari_ehleh'));
+
+
+                                // print_r($date );
+                                $tsag = $date[0];
+                                $minu = $date[1]; 
+
+                            ?>
+                            @for($i = 1; $i < config('settings.huvaari_ehleh'); $i++)
+                                <?php
+                                    if($i < 4){
+                                        $ihzav = 20;
+                                    }else{
+                                        $ihzav = 0;
+                                    }
+
+                                    $start = date("H:i", mktime($tsag, $minu + (5 * ($i - 1)) + (80 * ($i - 1)) + $ihzav, 0, 0, 0, 2000));
+                                    $end = date("H:i", mktime($tsag, $minu + (5 * ($i - 1)) + (80 * $i) + $ihzav, 0, 0, 0, 2000));
+                                ?>
+                            <tr class="hover:bg-blue-900">
+                                <td class="border border-b-2 dark:border-dark-5">
+                                    {{ $i }} - р цаг
+                                    <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">{{ $start }} - {{ $end }}</div>
+                                </td>
+                                <td class="border border-b-2 dark:border-dark-5 cal-1-{{$i}}"></td>
+                                <td class="border border-b-2 dark:border-dark-5 cal-2-{{$i}}"></td>
+                                <td class="border border-b-2 dark:border-dark-5 cal-3-{{$i}}"></td>
+                                <td class="border border-b-2 dark:border-dark-5 cal-4-{{$i}}"></td>
+                                <td class="border border-b-2 dark:border-dark-5 cal-5-{{$i}}"></td>
+                            </tr>
+                            @endfor
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
         </div>
     </div>
-    <!-- END: HTML Table Data -->
+    <!-- END: Hoverable Table -->
     <!-- BEGIN: Delete Confirmation Modal -->
     <div class="modal" id="delete-confirmation-modal">
         <div class="modal__content">

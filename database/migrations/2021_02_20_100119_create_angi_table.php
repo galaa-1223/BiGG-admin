@@ -16,7 +16,7 @@ class CreateAngiTable extends Migration
         Schema::create('angi', function (Blueprint $table) {
             $table->id();
             $table->string('ner', 300);
-            $table->tinyInteger('cource');
+            $table->tinyInteger('course');
             $table->string('buleg', 1)->default('a');
             $table->mediumInteger('m_id');
             $table->mediumInteger('b_id');

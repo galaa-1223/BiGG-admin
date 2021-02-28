@@ -9,21 +9,7 @@
     <h2 class="intro-y text-lg font-medium mt-10">Анги талбар</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="button text-white bg-theme-1 shadow-md mr-2">Анги нэмэх</button>
-            <div class="dropdown">
-                <button class="dropdown-toggle button px-2 box text-gray-700 dark:text-gray-300">
-                    <span class="w-5 h-5 flex items-center justify-center">
-                        <i class="w-4 h-4" data-feather="plus"></i>
-                    </span>
-                </button>
-            </div>
-            <div class="hidden md:block mx-auto text-gray-600"></div>
-            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-                <div class="w-56 relative text-gray-700 dark:text-gray-300">
-                    <input type="text" class="input w-56 box pr-10 placeholder-theme-13" placeholder="Хайлт...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
-                </div>
-            </div>
+            <a href="{{ route('bigg-angi-add') }}" class="button text-white bg-theme-1 shadow-md mr-2">Анги нэмэх</a>
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -48,12 +34,12 @@
                             </td>
                             <td>
                                 <a href="" class="font-medium whitespace-nowrap">{{ $angi->ner }} {{ $angi->course }}{{ $angi->buleg }}</a>
-                                <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">bagsh ner</div>
+                                <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">{{ Str::substr($angi->ovog, 0, 1) }}. {{ $angi->bagsh }}</div>
                             </td>
                             <td class="text-center">0</td>
                             <td class="w-40">
                                 <div class="flex items-center justify-center text-theme-9">
-                                    <i data-feather="check-square" class="w-4 h-4 mr-2"></i> Active
+                                    
                                 </div>
                             </td>
                             <td class="table-report__action w-56">
@@ -73,47 +59,6 @@
             </table>
         </div>
         <!-- END: Data List -->
-        <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            <ul class="pagination">
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevrons-left"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevron-left"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">...</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">1</a>
-                </li>
-                <li>
-                    <a class="pagination__link pagination__link--active" href="">2</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">3</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">...</a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevron-right"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="pagination__link" href="">
-                        <i class="w-4 h-4" data-feather="chevrons-right"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- END: Pagination -->
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
     <div class="modal" id="delete-confirmation-modal">

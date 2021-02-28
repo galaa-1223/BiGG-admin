@@ -21,31 +21,47 @@
                         </label>
                         <input type="text" name="ner" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Ангийн нэр хоосон байж болохгүй"/>
                     </div>
-                    <div class="input-form" class="mt-3">
+                    <div class="input-form mt-3">
                         <label class="flex flex-col sm:flex-row">
-                        Мэргэжил: 
+                        Мэргэжил:
                         </label>
                         <div class="mt-2">
                             <select name="m_id" data-search="true" class="tail-select w-full">
-                                <option value="1">Тэнхим 1</option>
-                                <option value="2">Тэнхим 2</option>
-                                <option value="3">Тэнхим 3</option>
+                                {{-- {{dd($bolovsrols)}} --}}
+                                @if(count($bolovsrols))
+                                    @foreach($bolovsrols as $bolovsrol):
+                                    <optgroup label="{{ $bolovsrol->ner }}">
+                                        @foreach($mergejils as $mergejil):
+                                            @if($bolovsrol->id == $mergejil->bolovsrol)
+                                                <option value="{{ $mergejil->id }}"> --- {{ $mergejil->ner }}  /{{ $mergejil->jil }} жил/ </option>
+                                            @endif
+                                        @endforeach;
+                                    </optgroup>
+                                    @endforeach;
+                                @else
+                                    <option value="">Хоосон байна</option>
+                                @endif
                             </select>
                         </div>
                     </div>
-                    <div class="input-form" class="mt-3">
+                    <div class="input-form mt-3">
                         <label class="flex flex-col sm:flex-row">
                         Ангийн багш: 
                         </label>
                         <div class="mt-2">
                             <select name="b_id" data-search="true" class="tail-select w-full">
-                                <option value="1">Тэнхим 1</option>
-                                <option value="2">Тэнхим 2</option>
-                                <option value="3">Тэнхим 3</option>
+                                @if(count($teachers))
+                                    <option value="">Багшгүй</option>
+                                    @foreach($teachers as $teacher):
+                                        <option value="{{ $teacher->id }}">{{ Str::substr($teacher->ovog, 0, 1) }}. {{ $teacher->ner }}</option>
+                                    @endforeach;
+                                @else
+                                    <option value="">Хоосон байна</option>
+                                @endif
                             </select>
                         </div>
                     </div>
-                    <div class="input-form" class="mt-3">
+                    <div class="input-form mt-3">
                         <label class="flex flex-col sm:flex-row">
                             Анги: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Курс тоогоор, Бүлэг Монгол үсгээр бичнэ.</span>
                         </label>

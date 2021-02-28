@@ -22,8 +22,8 @@
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap">#</th>
-                        <th class="whitespace-nowrap">Тэнхимийн нэр</th>
-                        <th class="text-center whitespace-nowrap">Багшийн тоо</th>
+                        <th class="whitespace-nowrap">Мэргэжлийн нэр</th>
+                        <th class="text-center whitespace-nowrap">Суралцах хугацаа</th>
                         <th class="text-center whitespace-nowrap">Үйлдэл</th>
                     </tr>
                 </thead>
@@ -37,9 +37,10 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="" class="font-medium whitespace-nowrap">{{ $mergejil->ner }} {{ $mergejil->course }}{{ $mergejil->buleg }}</a>
+                                <a href="" class="font-medium whitespace-nowrap">{{ $mergejil->ner }}</a>
+                                <div class="text-gray-600 text-xs mt-0.5">{{ $mergejil->mergejil }}</div>
                             </td>
-                            <td class="text-center">0</td>
+                            <td class="text-center">{{ $mergejil->jil }} жил</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
                                     <a class="flex items-center mr-3" href="javascript:;">

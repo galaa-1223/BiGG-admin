@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\Models\Activity;
 
 use App\Models\Tenhim;
 
 class TenhimController extends Controller
 {
+    
     public function index()
     {
         $pageTitle = 'Тэнхим';
@@ -49,13 +51,20 @@ class TenhimController extends Controller
 
         $tenhim = new Tenhim;
         $tenhim->ner = Str::ucfirst($request->ner);
+        $tovch = '';
+        $tenhimuud = explode(" ", $request->ner);
+        foreach($tenhimuud as $t):
+            $tovch .= Str::ucfirst(Str::substr($t, 0, 1));
+        endforeach;
+        $tenhim->tovch = $tovch;
         $tenhim->save();
 
         $activity = Activity::all()->last();
 
-        $activity->description; //returns 'created'
-        $activity->subject; //returns the instance of NewsItem that was created
-        $activity->changes; 
+        $activity->description;
+        $activity->subject;
+        $activity->causer;
+        $activity->changes;
 
         switch ($request->input('action')) {
             case 'save':
