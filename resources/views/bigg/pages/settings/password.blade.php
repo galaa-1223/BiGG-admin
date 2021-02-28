@@ -39,28 +39,28 @@
         </div>
         <!-- END: Profile Menu -->
         <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-            <!-- BEGIN: Change Password -->
+            <!-- BEGIN: Нууц үг солих -->
             <div class="intro-y box lg:mt-5">
                 <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                    <h2 class="font-medium text-base mr-auto">Change Password</h2>
+                    <h2 class="font-medium text-base mr-auto">Нууц үг солих</h2>
                 </div>
                 <div class="p-5">
                     <div>
-                        <label>Old Password</label>
-                        <input type="password" class="input w-full border mt-2" placeholder="Input text">
+                        <label>Хуучин нууц үг</label>
+                        <input type="password" class="input w-full border mt-2" />
                     </div>
                     <div class="mt-3">
-                        <label>New Password</label>
-                        <input type="password" class="input w-full border mt-2" placeholder="Input text">
+                        <label>Шинэ нууц үг</label>
+                        <input type="password" class="input w-full border mt-2" />
                     </div>
                     <div class="mt-3">
-                        <label>Confirm New Password</label>
-                        <input type="password" class="input w-full border mt-2" placeholder="Input text">
+                        <label>Шинэ нууц үг давтах</label>
+                        <input type="password" class="input w-full border mt-2" />
                     </div>
-                    <button type="button" class="button bg-theme-1 text-white mt-4">Change Password</button>
+                    <button type="button" class="button bg-theme-1 text-white mt-4">Нууц үг солих</button>
                 </div>
             </div>
-            <!-- END: Change Password -->
+            <!-- END: Нууц үг солих -->
         </div>
     </div>
 @endsection

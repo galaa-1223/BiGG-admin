@@ -55,43 +55,19 @@
                                     </div>
                                 </div>
                                 <div class="w-40 mx-auto cursor-pointer relative mt-5">
-                                    <button type="button" class="button w-full bg-theme-1 text-white">Change Photo</button>
+                                    <button type="button" class="button w-full bg-theme-1 text-white">Зураг солих</button>
                                     <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
                                 </div>
                             </div>
                         </div>
                         <div class="col-span-12 xl:col-span-8">
                             <div>
-                                <label>Display Name</label>
-                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" placeholder="Input text" value="images" disabled>
+                                <label>Харагдах нэр:</label>
+                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" />
                             </div>
                             <div class="mt-3">
-                                <label>Nearest MRT Station</label>
-                                <div class="mt-2">
-                                    <select data-search="true" class="tail-select w-full">
-                                        <option value="1">Admiralty</option>
-                                        <option value="2">Aljunied</option>
-                                        <option value="3">Ang Mo Kio</option>
-                                        <option value="4">Bartley</option>
-                                        <option value="5">Beauty World</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <label>Postal Code</label>
-                                <div class="mt-2">
-                                    <select data-search="true" class="tail-select w-full">
-                                        <option value="1">018906 - 1 STRAITS BOULEVARD SINGA...</option>
-                                        <option value="2">018910 - 5A MARINA GARDENS DRIVE...</option>
-                                        <option value="3">018915 - 100A CENTRAL BOULEVARD...</option>
-                                        <option value="4">018925 - 21 PARK STREET MARINA...</option>
-                                        <option value="5">018926 - 23 PARK STREET MARINA...</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <label>Address</label>
-                                <textarea class="input w-full border mt-2" placeholder="Adress">10 Anson Road, International Plaza, #10-11, 079903 Singapore, Singapore</textarea>
+                                <label>Имэйл хаяг:</label>
+                                <input type="text" class="input w-full border bg-gray-100 cursor-not-allowed mt-2" />
                             </div>
                             <button type="button" class="button w-20 bg-theme-1 text-white mt-3">{{ __('site.save') }}</button>
                         </div>

@@ -8,7 +8,7 @@
     @endif
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-            <form class="validate-form-teacher" action="{{ route('teachers-save') }}" method="post" enctype="multipart/form-data">
+            <form class="validate-form" action="{{ route('manager-teachers-save') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- BEGIN: Үндсэн мэдээлэл -->
             <div class="intro-y box lg:mt-5">
@@ -20,7 +20,7 @@
                         <div class="col-span-12 xl:col-span-4">
                             <div class="border border-gray-200 dark:border-dark-5 rounded-md p-5">
                                 <div class="w-40 h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                    <img id="preview-image" class="rounded-md" alt="BiGG systems 1.0" src="{{ asset('dist/images/Blank-avatar.png') }}">
+                                    <img id="preview-image" class="rounded-md" alt="manager systems 1.0" src="{{ asset('dist/images/Blank-avatar.png') }}">
                                     <div id="remove-image" title="Зургийг устгах уу?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full cursor-pointer text-white bg-theme-6 right-0 top-0 -mr-2 -mt-2 hidden">
                                         <i data-feather="x" class="w-4 h-4"></i>
                                     </div>
@@ -42,29 +42,33 @@
                                 <label class="flex flex-col sm:flex-row">
                                 Эцгийн нэр: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Криллээр бичнэ</span>
                                 </label>
-                                <input type="text" name="ovog" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Багшийн нэр хоосон байж болохгүй"/>
+                                <input type="text" name="ovog" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Эцгийн нэр хоосон байж болохгүй"/>
                             </div>
                             <div class="input-form mt-3">
                                 <label class="flex flex-col sm:flex-row">
                                 Ургийн овог: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Криллээр бичнэ</span>
                                 </label>
-                                <input type="text" name="urag" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Багшийн нэр хоосон байж болохгүй"/>
+                                <input type="text" name="urag" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Ургийн овог хоосон байж болохгүй"/>
                             </div>
                             <div class="input-form mt-3">
                                 <label class="flex flex-col sm:flex-row">
                                 Багшийн код: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Тоо оруулна</span>
                                 </label>
-                                <input type="integer" name="code" class="input w-full border mt-2" minlength="8" maxlength="8" required data-pristine-integer-message="Тэмдэгт оруулна уу" data-pristine-minlength-message="8 тэмдэгт байх ёстой" data-pristine-maxlength-message="8 тэмдэгт байх ёстой" data-pristine-required-message="Багшийн код хоосон байж болохгүй"/>
+                                <input type="integer" name="code" class="input w-full border mt-2" minlength="8" maxlength="8" required data-pristine-integer-message="Тоо оруулна уу" data-pristine-minlength-message="8 тэмдэгт байх ёстой" data-pristine-maxlength-message="8 тэмдэгт байх ёстой" data-pristine-required-message="Багшийн код хоосон байж болохгүй"/>
                             </div>
                             <div class="input-form mt-3">
                                 <label class="flex flex-col sm:flex-row">
                                 Тэнхим:
                                 </label>
                                 <div class="mt-2">
-                                    <select data-search="true" class="tail-select w-full">
-                                        <option value="1">Тэнхим 1</option>
-                                        <option value="2">Тэнхим 2</option>
-                                        <option value="3">Тэнхим 3</option>
+                                    <select name="t_id" data-search="true" class="tail-select w-full">
+                                    @if($tenhims)
+                                        @foreach($tenhims as $tenhim)
+                                        <option value="{{ $tenhim->id }}">{{ $tenhim->ner }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="">Хоосон байна</option>
+                                    @endif
                                     </select>
                                 </div>
                             </div>
@@ -73,10 +77,14 @@
                                     Мэргэжил:
                                 </label>
                                 <div class="mt-2">
-                                    <select data-search="true" class="tail-select w-full">
-                                        <option value="1">Компьютерийн багш</option>
-                                        <option value="2">Тогоочийн багш</option>
-                                        <option value="3">Барилгын багш</option>
+                                <select name="mb_id" data-search="true" class="tail-select w-full">
+                                    @if($mergejils)
+                                        @foreach($mergejils as $mergejil)
+                                        <option value="{{ $mergejil->id }}">{{ $mergejil->ner }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="">Хоосон байна</option>
+                                    @endif
                                     </select>
                                 </div>
                             </div>
@@ -162,7 +170,7 @@
                         </div>
                     </div>
                     <div class="flex justify-end mt-4">
-                        <button type="button" onclick="window.location.href='{{ route('teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
+                        <button type="button" onclick="window.location.href='{{ route('manager-teachers') }}'" class="button w-40 bg-theme-6 text-white ml-5">{{ __('site.cancel') }}</button> 
                         <button type="submit" name="action" value="save_and_new" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save_and_new') }}</button> 
                         <button type="submit" name="action" value="save" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.save') }}</button>
                     </div>

@@ -22,11 +22,12 @@ class CreateStudentsTable extends Migration
             $table->string('register', 10);
             $table->enum('huis', ['er', 'em'])->default('er');
             $table->char('code', 8);
-            $table->mediumInteger('a_id');
             $table->string('password');
             $table->string('phone', 50)->nullable();
             $table->string('image', 200)->nullable();
             $table->string('address', 500)->nullable();
+            $table->tinyInteger('a_id');
+            $table->enum('status', [1, 2, 3])->default(1)->comment('1 - Суралцаж байгаа,/n 2 - Шилжсэн,/n 3 - Чөлөө авсан');
             $table->string('email', 50)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

@@ -4,26 +4,8 @@ import Toastify from "toastify-js";
 (function (cash) {
     "use strict";
 
-    // function onSubmit(pristine) {
-    //     let valid = pristine.validate();
 
-    //     if (valid) {
-    //         return true;
-    //     } else {
-    //         Toastify({
-    //             text: "Багшийн бүртгэлийн формыг бүрэн бөглөнө үү!",
-    //             duration: 3000,
-    //             newWindow: true,
-    //             close: true,
-    //             gravity: "bottom",
-    //             position: "left",
-    //             backgroundColor: "#D32929",
-    //             stopOnFocus: true,
-    //         }).showToast();
-    //     }
-    // }
-
-    cash(".validate-form-teacher").each(function () {
+    cash(".validate-form").each(function () {
         let pristine = new Pristine(this, {
             classTo: "input-form",
             errorClass: "has-error",

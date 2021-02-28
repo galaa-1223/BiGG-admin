@@ -8,7 +8,7 @@
     @endif
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 lg:col-span-8 xxl:col-span-9">
-            <form class="validate-form-teacher" action="{{ route('bigg-teachers-save') }}" method="post" enctype="multipart/form-data">
+            <form class="validate-form" action="{{ route('bigg-teachers-save') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- BEGIN: Үндсэн мэдээлэл -->
             <div class="intro-y box lg:mt-5">
@@ -42,13 +42,13 @@
                                 <label class="flex flex-col sm:flex-row">
                                 Эцгийн нэр: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Криллээр бичнэ</span>
                                 </label>
-                                <input type="text" name="ovog" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Багшийн нэр хоосон байж болохгүй"/>
+                                <input type="text" name="ovog" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Эцгийн нэр хоосон байж болохгүй"/>
                             </div>
                             <div class="input-form mt-3">
                                 <label class="flex flex-col sm:flex-row">
                                 Ургийн овог: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Криллээр бичнэ</span>
                                 </label>
-                                <input type="text" name="urag" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Багшийн нэр хоосон байж болохгүй"/>
+                                <input type="text" name="urag" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Ургийн овог хоосон байж болохгүй"/>
                             </div>
                             <div class="input-form mt-3">
                                 <label class="flex flex-col sm:flex-row">
@@ -61,10 +61,14 @@
                                 Тэнхим:
                                 </label>
                                 <div class="mt-2">
-                                    <select data-search="true" class="tail-select w-full">
-                                        <option value="1">Тэнхим 1</option>
-                                        <option value="2">Тэнхим 2</option>
-                                        <option value="3">Тэнхим 3</option>
+                                    <select name="t_id" data-search="true" class="tail-select w-full">
+                                    @if($tenhims)
+                                        @foreach($tenhims as $tenhim)
+                                        <option value="{{ $tenhim->id }}">{{ $tenhim->ner }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="">Хоосон байна</option>
+                                    @endif
                                     </select>
                                 </div>
                             </div>
@@ -73,10 +77,14 @@
                                     Мэргэжил:
                                 </label>
                                 <div class="mt-2">
-                                    <select data-search="true" class="tail-select w-full">
-                                        <option value="1">Компьютерийн багш</option>
-                                        <option value="2">Тогоочийн багш</option>
-                                        <option value="3">Барилгын багш</option>
+                                <select name="mb_id" data-search="true" class="tail-select w-full">
+                                    @if($mergejils)
+                                        @foreach($mergejils as $mergejil)
+                                        <option value="{{ $mergejil->id }}">{{ $mergejil->ner }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="">Хоосон байна</option>
+                                    @endif
                                     </select>
                                 </div>
                             </div>

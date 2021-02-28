@@ -10,6 +10,8 @@ use Image;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Teachers;
+use App\Models\Tenhim;
+use App\Models\MergejilBagsh;
 
 class TeachersController extends Controller
 {
@@ -18,7 +20,7 @@ class TeachersController extends Controller
     {
         $pageTitle = 'Багш';
         $pageName = 'teachers';
-        $teachers = Teachers::orderBy('created_at', 'desc')->paginate(9);
+        $teachers = Teachers::orderBy('created_at', 'desc')->get();
 
         $activeMenu = activeMenu($pageName);
 
@@ -36,12 +38,17 @@ class TeachersController extends Controller
         $pageTitle = 'Багш нэмэх';
         $pageName = 'teachers';
 
+        $tenhim = Tenhim::orderBy('created_at', 'desc')->get();
+        $mergejil = MergejilBagsh::orderBy('created_at', 'desc')->get();
+
         $activeMenu = activeMenu($pageName);
 
         return view('bigg/pages/'.$pageName.'/add', [
             'first_page_name' => $activeMenu['first_page_name'],
             'page_title' => $pageTitle,
             'page_name' => $pageName,
+            'tenhims' => $tenhim,
+            'mergejils' => $mergejil,
             'user' => Auth::guard('bigg')->user()
         ]);
     }
@@ -70,6 +77,8 @@ class TeachersController extends Controller
         $member->tursun = $request->get("tursun");
         $member->email = $request->get("email");
         $member->password = $request->get("password");
+        $member->t_id = $request->get("t_id");
+        $member->mb_id = $request->get("mb_id");
         $member->phone = $request->get("phone");
         $member->address = $request->get("address");
 

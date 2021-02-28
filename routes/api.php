@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TeachersController;
+use App\Http\Controllers\Api\StudentsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +21,9 @@ use App\Http\Controllers\Api\TeachersController;
 
 Route::group(['prefix' => '/v1'], function()
 {
+    Route::get('students', [StudentsController::class, 'studentList']);
+    Route::post("student-login", [StudentsController::class, 'studentLogin']);
+
     Route::get('teachers', [TeachersController::class, 'teacherList']);
     // Route::get('teachers/{query}', [TeachersController::class, 'teacherQuery']);
     Route::post("teacher-login", [TeachersController::class, 'teacherLogin']);
