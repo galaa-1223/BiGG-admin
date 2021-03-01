@@ -4,6 +4,8 @@ import Toastify from "toastify-js";
     // Show or hide global event listener
     let events = [];
     let Did = 0;
+    let Numb = 0;
+    let Udr = 0;
 
     // Get highest z-index
     function getHighestZindex() {
@@ -125,16 +127,16 @@ import Toastify from "toastify-js";
                 }
             });
 
-            Toastify({
-                text: "Устгах үйлдлийг цуцаллаа!",
-                duration: 3000,
-                newWindow: true,
-                close: true,
-                gravity: "bottom",
-                position: "right",
-                backgroundColor: "#D32929",
-                stopOnFocus: true,
-            }).showToast();
+            // Toastify({
+            //     text: "Үйлдлийг цуцаллаа!",
+            //     duration: 3000,
+            //     newWindow: true,
+            //     close: true,
+            //     gravity: "bottom",
+            //     position: "right",
+            //     backgroundColor: "#D32929",
+            //     stopOnFocus: true,
+            // }).showToast();
         }
     }
 
@@ -194,6 +196,49 @@ import Toastify from "toastify-js";
         cash(".t_id").val(Did);
         return true;
     });
+
+    cash("body").on("click", '.modal_form', function () {
+        cash(".huvaari-udur").val(cash(this).data('col'));
+        cash(".huvaari-tsag").val(cash(this).data('row'));
+
+        Numb = cash(this).data('number');
+        Udr = cash(this).data('udur');
+
+        cash(".huvaari-dooguur-container").hide();
+
+        show("#huvaari-modal-preview");
+    });
+
+    cash('#huvaari-hicheel').on('change', function() {
+        if(cash('#huvaari-hicheel').val() == 2){
+            cash(".huvaari-dooguur-container").show();
+            cash(".huvaari-garchig1").html('Дээгүүр 7 хоног:');
+        }else{
+            cash(".huvaari-dooguur-container").hide();
+            cash(".huvaari-garchig1").html('Орох хичээл:');
+        }
+    });
+
+    cash("body").on("click", '#huvaari-insert', function () {
+        // alert(Numb +'---'+ Udr);
+        cash(".table-" + Numb + "-" + Udr).append('<div class="rounded-md flex px-2 py-2 my-2 bg-theme-12 text-theme-1 text-center huvaari-event">fdsfsda</div>');
+        hide("#huvaari-modal-preview");
+        
+    });
+
+    cash('.huvaari-event').on("dragstart", function (event) {
+        var dt = event.originalEvent.dataTransfer;
+        dt.setData('Text', cash(this).attr('id'));
+    });
+
+    // cash('.huvaari-table td').on("dragenter dragover drop", function (event) {	
+    //     event.preventDefault();
+    //     if (event.type === 'drop') {
+    //         var data = event.originalEvent.dataTransfer.getData('Text',cash(this).attr('id'));
+    //         de=cash('#'+data).detach();
+    //         de.appendTo(cash(this));	
+    //     };
+    // });
 
     // Detect show or hide event
     setInterval(function () {

@@ -124,6 +124,8 @@ Route::group(['prefix' => 'bigg','middleware' => 'biggauth'], function () {
 
 	// Huvaari
 	Route::get('huvaari',[HuvaariController::class, 'index'])->name('bigg-huvaari');
+	Route::get('huvaari/angi',[HuvaariController::class, 'angi'])->name('bigg-huvaari-angi');
+	Route::get('huvaari/shalgalt',[HuvaariController::class, 'shalgalt'])->name('bigg-huvaari-shalgalt');
 	Route::get('huvaari/bagsh/{bagshId}',[HuvaariController::class, 'bagsh'])->name('bigg-huvaari-bagsh');
 
 	// Students
