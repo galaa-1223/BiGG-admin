@@ -13,6 +13,11 @@
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            @if(!count($angiud))
+                <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-17 text-theme-11">
+                    <i data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> Мэдээлэл алга байна!
+                </div>
+            @else
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -57,6 +62,7 @@
                         @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
         <!-- END: Data List -->
     </div>

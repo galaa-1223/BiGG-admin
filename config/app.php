@@ -43,11 +43,11 @@ return [
                     'title' => 'Мэргэжил багш',
                     'link' => '/bigg/mergejil_bagsh'
                 ],
-                'hicheels' => [
+                'hicheel' => [
                     'icon' => 'book',
-                    'page_name' => 'hicheels',
+                    'page_name' => 'hicheel',
                     'title' => 'Хичээлүүд',
-                    'link' => '/bigg/hicheels'
+                    'link' => '/bigg/hicheel'
                 ]
                 
             ]
@@ -70,11 +70,11 @@ return [
                     'title' => 'Багш жагсаалт',
                     'link' => '/bigg/teachers'
                 ],
-                'teachers-hicheels' => [
-                    'icon' => 'book',
-                    'page_name' => 'teachers-hicheels',
-                    'title' => 'Хичээл',
-                    'link' => '/bigg/hicheel'
+                'teachers-fond' => [
+                    'icon' => 'file-text',
+                    'page_name' => 'teachers-fond',
+                    'title' => 'Цагийн фонд',
+                    'link' => '/bigg/teachers/fond'
                 ]
             ]
         ],
@@ -240,9 +240,9 @@ return [
                     'title' => 'Багш жагсаалт',
                     'link' => '/manager/teachers'
                 ],
-                'teachers-hicheels' => [
+                'teachers-fond' => [
                     'icon' => 'book',
-                    'page_name' => 'teachers-hicheels',
+                    'page_name' => 'teachers-fond',
                     'title' => 'Хичээл',
                     'link' => '/manager/hicheel'
                 ]

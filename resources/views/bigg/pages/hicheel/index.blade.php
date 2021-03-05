@@ -6,14 +6,32 @@
             <i data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> {!! \Session::get('success') !!}
         </div>
     @endif
-    <h2 class="intro-y text-lg font-medium mt-10">{{ $page_title }} талбар</h2>
+    <div class="intro-y flex items-center mt-8">
+        <h2 class="text-lg font-medium mr-auto">{{ $page_title }} талбар</h2>
+    </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('bigg-hicheel-add') }}" class="button text-white bg-theme-1 shadow-md mr-2">{{ $page_title }} нэмэх</a>
+        <div class="intro-y col-span-12 lg:col-span-6">
+            <form class="validate-form-teacher" action="{{ route('bigg-hicheel-save') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <!-- BEGIN: Анги нэмэх -->
+                <div class="intro-y box p-5">
+                    <div class="input-form">
+                        <label class="flex flex-col sm:flex-row">
+                        Хичээлийн нэр: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Криллээр бичнэ</span>
+                        </label>
+                        <input type="text" name="ner" placeholder="Компьютерийн үндэс" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Хичээлийн нэр хоосон байж болохгүй"/>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button type="submit" name="action" value="save" class="button w-40 bg-theme-1 text-white ml-5">{{ __('site.add') }}</button>
+                    </div>
+                </div>
+                <!-- END: Анги нэмэх -->
+            </form>
         </div>
-        <!-- BEGIN: Data List -->
-        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-            @if(!count($hicheels))
+    </div> 
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 lg:col-span-6">
+        @if(!count($hicheels))
                 <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-17 text-theme-11">
                     <i data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> Мэдээлэл алга байна!
                 </div>
@@ -23,7 +41,6 @@
                     <tr>
                         <th class="whitespace-nowrap">#</th>
                         <th class="whitespace-nowrap">Хичээлийн нэр</th>
-                        <th class="text-center whitespace-nowrap">Заах цаг</th>
                         <th class="text-center whitespace-nowrap">Үйлдэл</th>
                     </tr>
                 </thead>
@@ -39,12 +56,8 @@
                             <td>
                                 <a href="" class="font-medium whitespace-nowrap">{{ $hicheel->ner }} {{ $hicheel->course }}{{ $hicheel->buleg }}</a>
                             </td>
-                            <td class="text-center">0</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="javascript:;">
-                                        <i data-feather="check-square" class="w-4 h-4 mr-1"></i> {{ __('site.edit') }}
-                                    </a>
                                     <a class="flex items-center text-theme-6 delete_button" href="javascript:;" data-id="{{ $hicheel->id }}" data-target="#delete-confirmation-modal">
                                         <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> {{ __('site.delete') }}
                                     </a>
@@ -57,8 +70,8 @@
             </table>
             @endif
         </div>
-        <!-- END: Data List -->
-    </div>
+    </div> 
+    
     <!-- BEGIN: Delete Confirmation Modal -->
     <div class="modal" id="delete-confirmation-modal">
         <div class="modal__content">

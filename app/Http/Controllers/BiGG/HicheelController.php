@@ -50,8 +50,6 @@ class HicheelController extends Controller
         $hicheel = new Hicheel;
 
         $hicheel->ner = Str::ucfirst($request->ner);
-        $hicheel->tsag = $request->tsag;
-        $hicheel->b_id = $request->b_id;
 
         $hicheel->save();
 

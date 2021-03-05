@@ -29,4 +29,13 @@ class Teachers extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function scopeProfile($query, $t_id)
+    // {
+    //     return $query->select('teachers.*')//, 'teachers.ner', 'teachers.ovog', 'teachers.image', 'teachers.code', 'teachers.t_id', 'teacher_mergejil.ner as mergejil', 'tenhim.ner as tenhim', 'tenhim.tovch')
+    //                         // ->join('teacher_mergejil', 'teacher_mergejil.id', '=', 'teachers.mb_id')
+    //                         // ->join('tenhim', 'tenhim.id', '=', 'teachers.t_id')
+    //                         ->where('teachers.t_id', $t_id);
+        
+    // }
 }

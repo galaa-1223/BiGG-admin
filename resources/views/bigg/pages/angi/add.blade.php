@@ -17,12 +17,6 @@
                 <div class="intro-y box p-5">
                     <div class="input-form">
                         <label class="flex flex-col sm:flex-row">
-                        Ангийн нэр: <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">Криллээр бичнэ</span>
-                        </label>
-                        <input type="text" name="ner" class="input w-full border mt-2" minlength="2" required data-pristine-minlength-message="2 тэмдэгдээс дээш байх ёстой" data-pristine-required-message="Ангийн нэр хоосон байж болохгүй"/>
-                    </div>
-                    <div class="input-form mt-3">
-                        <label class="flex flex-col sm:flex-row">
                         Мэргэжил:
                         </label>
                         <div class="mt-2">

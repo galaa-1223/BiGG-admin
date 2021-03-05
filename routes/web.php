@@ -61,11 +61,13 @@ Route::group(['prefix' => 'bigg','middleware' => 'biggauth'], function () {
 	Route::get('teachers',[TeachersController::class, 'index'])->name('bigg-teachers');
 	Route::get('teachers/add',[TeachersController::class, 'add'])->name('bigg-teachers-add');
 	Route::get('teachers/edit/{id}',[TeachersController::class, 'edit'])->name('teachers-edit');
-	// Route::get('teachers/delete/{id}',[TeachersController::class, 'destroy'])->name('teachers-delete');
+	Route::get('teachers/fond',[TeachersController::class, 'fond'])->name('bigg-teachers-fond');
+	Route::get('teachers/fond_list/{id}',[TeachersController::class, 'fond_list'])->name('bigg-teachers-fond-list');
 
 	Route::post('teachers/add',[TeachersController::class, 'store'])->name('bigg-teachers-save');
 	Route::post('teachers/edit/{id}',[TeachersController::class, 'update'])->name('bigg-teachers-edit');
 	Route::post('teachers/delete/',[TeachersController::class, 'delete'])->name('bigg-teachers-delete-ajax');
+	Route::post('teachers/fond_add',[TeachersController::class, 'fond_store'])->name('bigg-teachers-fond-save');
 
 	Route::delete('teachers/delete/{id}',[TeachersController::class, 'destroy'])->name('bigg-teachers-delete');
 
@@ -113,8 +115,8 @@ Route::group(['prefix' => 'bigg','middleware' => 'biggauth'], function () {
 
 	// Hicheel
 	Route::get('hicheel',[HicheelController::class, 'index'])->name('bigg-hicheel');
-	Route::get('hicheel/add',[HicheelController::class, 'add'])->name('bigg-hicheel-add');
-	Route::get('hicheel/edit/{id}',[HicheelController::class, 'edit'])->name('hicheel-edit');
+	// Route::get('hicheel/add',[HicheelController::class, 'add'])->name('bigg-hicheel-add');
+	// Route::get('hicheel/edit/{id}',[HicheelController::class, 'edit'])->name('hicheel-edit');
 
 	Route::post('hicheel/add',[HicheelController::class, 'store'])->name('bigg-hicheel-save');
 	Route::post('hicheel/edit/{id}',[HicheelController::class, 'update'])->name('bigg-hicheel-edit');

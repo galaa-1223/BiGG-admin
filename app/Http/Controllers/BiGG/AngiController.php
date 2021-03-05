@@ -66,7 +66,17 @@ class AngiController extends Controller
 
         $angi = new Angi;
 
-        $angi->ner = Str::ucfirst($request->ner);
+        $mergejil = Mergejil::findOrFail($request->m_id);
+
+        $tovch = '';
+        $ners = explode(" ", $mergejil->ner);
+        foreach($ners as $t):
+            $tovch .= Str::ucfirst(Str::substr($t, 0, 1));
+        endforeach;
+
+        $angi->tovch = $tovch.' '.$request->course.Str::ucfirst($request->buleg);
+
+        $angi->ner = Str::ucfirst($mergejil->ner);
         $angi->course = $request->course;
         $angi->buleg = Str::ucfirst($request->buleg);
         $angi->m_id = $request->m_id;
